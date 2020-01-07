@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="taam_10dp">10dp</dimen>
+    <dimen name="taam_20dp">20dp</dimen>
+    <dimen name="taam_50dp">50dp</dimen>
+    <dimen name="taam_15dp">15dp</dimen>
+    <dimen name="taam_150dp">150dp</dimen>
+    <dimen name="taam_200dp">200dp</dimen>
+</resources>
