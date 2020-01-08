@@ -115,7 +115,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnLogin"
         android:layout_width="0dp"
         android:layout_height="@dimen/taam_50dp"
         android:layout_marginTop="16dp"
@@ -136,6 +136,6 @@
         android:textColor="@android:color/black"
         app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
         app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

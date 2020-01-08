@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/inicioFragment"
+        android:title="@string/menu_inicio"
+        android:icon="@drawable/ic_home_white_24dp" />
+
+    <item
+        android:id="@+id/perfilFragment"
+        android:title="@string/menu_perfil"
+        android:icon="@drawable/ic_pregnant_woman_black_24dp" />
+
+    <item
+        android:id="@+id/conselhoFragment"
+        android:title="@string/menu_conselho"
+        android:icon="@drawable/ic_child_care_black_24dp"/>
+
+    <item
+        android:id="@+id/actividadesFragment"
+        android:title="@string/menu_actividades"
+        android:icon="@drawable/ic_timeline_black_24dp" />
+
+</menu>

@@ -20,5 +20,16 @@
         android:id="@+id/telaInicialFragment"
         android:name="com.example.clinicalucreciapain.TelaInicialFragment"
         android:label="fragment_tela_inicial"
-        tools:layout="@layout/fragment_tela_inicial" />
+        tools:layout="@layout/fragment_tela_inicial" >
+        <action
+            android:id="@+id/action_telaInicialFragment_to_inicialSessaoPacienteFragment2"
+            app:destination="@id/inicialSessaoPacienteFragment2"
+            app:popUpTo="@+id/telaInicialFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/inicialSessaoPacienteFragment2"
+        android:name="com.example.clinicalucreciapain.InicialSessaoPacienteFragment"
+        android:label="fragment_inicial_sessao_paciente"
+        tools:layout="@layout/fragment_inicial_sessao_paciente" />
 </navigation>

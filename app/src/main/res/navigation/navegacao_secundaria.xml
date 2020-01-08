@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/navegacao_inicial">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacao_inicial"
+    app:startDestination="@id/inicioFragment">
 
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.example.clinicalucreciapain.InicioFragment"
+        android:label="fragment_inicio"
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_inicioFragment_to_perfilFragment"
+            app:destination="@id/perfilFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_actividadesFragment"
+            app:destination="@id/actividadesFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_conselhoFragment"
+            app:destination="@id/conselhoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/perfilFragment"
+        android:name="com.example.clinicalucreciapain.PerfilFragment"
+        android:label="fragment_perfil"
+        tools:layout="@layout/fragment_perfil" />
+    <fragment
+        android:id="@+id/conselhoFragment"
+        android:name="com.example.clinicalucreciapain.ConselhoFragment"
+        android:label="fragment_conselho"
+        tools:layout="@layout/fragment_conselho" />
+    <fragment
+        android:id="@+id/actividadesFragment"
+        android:name="com.example.clinicalucreciapain.ActividadesFragment"
+        android:label="fragment_actividades"
+        tools:layout="@layout/fragment_actividades" />
 </navigation>
