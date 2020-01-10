@@ -6,4 +6,5 @@
     <dimen name="taam_15dp">15dp</dimen>
     <dimen name="taam_150dp">150dp</dimen>
     <dimen name="taam_200dp">200dp</dimen>
+    <dimen name="taam_100dp">100dp</dimen>
 </resources>

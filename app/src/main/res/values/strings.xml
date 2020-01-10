@@ -9,4 +9,6 @@
     <string name="menu_perfil">Perfil</string>
     <string name="menu_conselho">Conselhos</string>
     <string name="menu_actividades">Actividades</string>
+    <string name="txt_recomendacoes">Recomendações</string>
+    <string name="titulo">Titulo</string>
 </resources>
