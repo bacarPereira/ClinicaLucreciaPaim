@@ -1,14 +1,405 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PerfilFragment">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <data>
+        <variable name="gestante"
+            type="com.example.clinicalucreciapain.dataBinding.GestanteBinding"/>
+
+        <variable name="imageUrl" type="String"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".fragmentos.secundarioPaciente.PerfilFragment">
+
+
+            <ImageButton
+                android:id="@+id/imgb_voltar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@android:color/transparent"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_arrow_back_rosa_24dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="20dp" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_end="20dp" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfileImage"
+                android:layout_width="@dimen/tamanho_80"
+                android:layout_height="@dimen/tamanho_80"
+                android:layout_marginTop="16dp"
+                app:profileImage='@{imageUrl ?? ""}'
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="Nome"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/textInputUsuario"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/ivProfileImage">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx2"
+                    android:focusable="false"
+                    android:text="@{gestante.nome}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputUsuario"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="Bi"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tx1"
+                app:layout_constraintTop_toTopOf="@+id/tx1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textUsuario"
+                    android:text="@{gestante.bi}"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="Nacionalidade"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/txt4"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tx1">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx3_"
+                    android:focusable="false"
+                    android:layout_width="match_parent"
+                    android:text="@{gestante.nacionalidade}"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="Província"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tx3"
+                app:layout_constraintTop_toTopOf="@+id/tx3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt4_"
+                    android:focusable="false"
+                    android:text="@{gestante.provincia}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="Município"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/txt6"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tx3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx5_"
+                    android:focusable="false"
+                    android:text="@{gestante.municipio}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/txt6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="Bairro"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tx5"
+                app:layout_constraintTop_toTopOf="@+id/tx5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/txt6_"
+                    android:focusable="false"
+                    android:text="@{gestante.bairro}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="Rua"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/tx8"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tx5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx7_"
+                    android:focusable="false"
+                    android:text="@{gestante.rua}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="Altura"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tx7"
+                app:layout_constraintTop_toBottomOf="@+id/tx5">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx8_"
+                    android:focusable="false"
+                    android:text="@{gestante.altura}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="Peso"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/tx10"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tx7">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx9_"
+                    android:focusable="false"
+                    android:text="@{gestante.peso}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="Sexo"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tx9"
+                app:layout_constraintTop_toTopOf="@+id/tx9">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx10_"
+                    android:focusable="false"
+                    android:text="@{gestante.sexo}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="Grupo Sanguineo"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/tx12"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tx9">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx11_"
+                    android:focusable="false"
+                    android:text="@{gestante.grupo_sanguineo}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="Raça"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tx11"
+                app:layout_constraintTop_toTopOf="@+id/tx11">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx12_"
+                    android:focusable="false"
+                    android:text="@{gestante.raca}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:hint="E-mail"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/tx14"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tx11">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx13_"
+                    android:focusable="false"
+                    android:text="@{gestante.email}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:hint="Telefone"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toStartOf="@+id/guideline2"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/tx13"
+                app:layout_constraintTop_toTopOf="@+id/tx13">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx14_"
+                    android:focusable="false"
+                    android:text="@{gestante.telefone}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tx15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="Data Nascimento"
+                android:theme="@style/EditTextEstilo"
+                app:layout_constraintEnd_toEndOf="@+id/tx13"
+                app:layout_constraintStart_toStartOf="@+id/guideline"
+                app:layout_constraintTop_toBottomOf="@+id/tx13">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tx15_"
+                    android:focusable="false"
+                    android:text="@{gestante.data_nac}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

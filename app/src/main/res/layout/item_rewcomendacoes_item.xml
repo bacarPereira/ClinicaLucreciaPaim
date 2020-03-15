@@ -6,13 +6,13 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/img_rec_foto"
         android:layout_width="@dimen/taam_100dp"
         android:layout_height="@dimen/taam_100dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView6"
+        app:layout_constraintEnd_toStartOf="@+id/txt_rec_resumo"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/ic_img_app_splash" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/txt_rec_resumo"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
@@ -28,14 +28,14 @@
         android:text="@string/txt_recomendacoes"
         android:textColor="@android:color/black"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView3"
+        app:layout_constraintBottom_toBottomOf="@+id/img_rec_foto"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+        app:layout_constraintStart_toEndOf="@+id/img_rec_foto"
+        app:layout_constraintTop_toBottomOf="@+id/txt_rec_titulo" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/txt_rec_titulo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -43,7 +43,7 @@
         android:text="@string/titulo"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView3"
-        app:layout_constraintTop_toTopOf="@+id/imageView3"
+        app:layout_constraintStart_toEndOf="@+id/img_rec_foto"
+        app:layout_constraintTop_toTopOf="@+id/img_rec_foto"
         tools:textColor="@android:color/black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navegacao_actividade_gestante"
+    app:startDestination="@id/inicioMedicoFragment">
+    <fragment
+        android:id="@+id/inicioMedicoFragment"
+        android:name="com.example.clinicalucreciapain.InicioMedicoFragment"
+        android:label="fragment_inicio_medico"
+        tools:layout="@layout/fragment_inicio_medico" />
+    <fragment
+        android:id="@+id/actividadesMedicoFragment"
+        android:name="com.example.clinicalucreciapain.ActividadesMedicoFragment"
+        android:label="fragment_actividades_medico"
+        tools:layout="@layout/fragment_actividades_medico" />
+    <fragment
+        android:id="@+id/definicoesFragment2"
+        android:name="com.example.clinicalucreciapain.DefinicoesFragment"
+        android:label="fragment_definicoes"
+        tools:layout="@layout/fragment_definicoes" />
+</navigation>

@@ -2,6 +2,7 @@
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:fillViewport="true"
     android:layout_width="match_parent"
@@ -9,47 +10,94 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".InicioFragment">
+        tools:context=".fragmentos.secundarioPaciente.InicioFragment">
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardView2"
+            android:id="@+id/cardMeuCartao_inicio"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="110dp"
             android:layout_marginTop="8dp"
+            app:cardElevation="@dimen/taam_20dp"
+            card_view:cardCornerRadius="4dp"
             app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
             app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
             app:layout_constraintTop_toBottomOf="@+id/cardView">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#9926C0D5">
 
                 <TextView
                     android:id="@+id/tv_total_consultas"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginBottom="8dp"
                     android:text="205 g"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_meu_peso"
+                    app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
                     android:id="@+id/tv_meu_peso"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
                     android:text="230 mm"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_total_consultas" />
+                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FOTO DO BEBE"
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="@dimen/taam_100dp"
+                    android:layout_height="@dimen/taam_100dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="24dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/ic_bebe_fecto" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="end"
+                    android:text="Altura"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_meu_peso"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:text="Peso"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/tv_total_consultas"
+                    app:layout_constraintStart_toEndOf="@+id/imageView4"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_meu_peso" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -72,45 +120,73 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardView"
             android:layout_width="0dp"
-            android:layout_height="100dp"
+            android:layout_height="115dp"
             android:layout_marginTop="8dp"
+            app:cardElevation="@dimen/taam_20dp"
             app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
             app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            card_view:cardCornerRadius="4dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:background="#99426CAA">
 
                 <TextView
-                    android:id="@+id/tv_peso_bebe"
+                    android:id="@+id/tv_total_consultas_"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
                     android:layout_marginTop="8dp"
                     android:text="Total de Consultas - 01"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/txt_ola_gest" />
 
                 <TextView
-                    android:id="@+id/textView7"
+                    android:id="@+id/txt_meu_peso"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Meu Peso - 49 kg"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_peso_bebe" />
+                    app:layout_constraintStart_toStartOf="@+id/tv_total_consultas_"
+                    app:layout_constraintTop_toBottomOf="@+id/tv_total_consultas_" />
 
                 <TextView
                     android:id="@+id/textView8"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Tempo de Gestação - 30 dias"
+                    android:text="9 Semanas e 10 dias"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/txt_meu_peso"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_meu_peso" />
+
+                <TextView
+                    android:id="@+id/txt_ola_gest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="Olá Ana"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -124,7 +200,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
-            app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+            app:layout_constraintTop_toBottomOf="@+id/cardMeuCartao_inicio" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

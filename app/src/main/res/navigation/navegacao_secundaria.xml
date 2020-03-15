@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/inicioFragment"
-        android:name="com.example.clinicalucreciapain.InicioFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.secundarioPaciente.InicioFragment"
         android:label="fragment_inicio"
         tools:layout="@layout/fragment_inicio" >
         <action
@@ -19,20 +19,52 @@
         <action
             android:id="@+id/action_inicioFragment_to_conselhoFragment"
             app:destination="@id/conselhoFragment" />
+        <action
+            android:id="@+id/action_inicioFragment_to_detalheRecomendacaoFragment"
+            app:destination="@id/detalheRecomendacaoFragment"
+            app:exitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_inicioFragment_to_definicoesFragment"
+            app:destination="@id/definicoesFragment" />
     </fragment>
     <fragment
         android:id="@+id/perfilFragment"
-        android:name="com.example.clinicalucreciapain.PerfilFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.secundarioPaciente.PerfilFragment"
         android:label="fragment_perfil"
         tools:layout="@layout/fragment_perfil" />
     <fragment
         android:id="@+id/conselhoFragment"
-        android:name="com.example.clinicalucreciapain.ConselhoFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.secundarioPaciente.ConselhoFragment"
         android:label="fragment_conselho"
-        tools:layout="@layout/fragment_conselho" />
+        tools:layout="@layout/fragment_conselho" >
+        <action
+            android:id="@+id/action_conselhoFragment_to_detalheRecomendacaoFragment"
+            app:destination="@id/detalheRecomendacaoFragment"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
     <fragment
         android:id="@+id/actividadesFragment"
-        android:name="com.example.clinicalucreciapain.ActividadesFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.secundarioPaciente.ActividadesFragment"
         android:label="fragment_actividades"
         tools:layout="@layout/fragment_actividades" />
+    <fragment
+        android:id="@+id/detalheRecomendacaoFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.secundarioPaciente.DetalheRecomendacaoFragment"
+        android:label="fragment_detalhe_recomendacao"
+        tools:layout="@layout/fragment_detalhe_recomendacao" >
+        <argument
+            android:name="titulo"
+            app:argType="string" />
+        <argument
+            android:name="foto"
+            app:argType="string" />
+        <argument
+            android:name="corpo"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/definicoesFragment"
+        android:name="com.example.clinicalucreciapain.DefinicoesFragment"
+        android:label="fragment_definicoes"
+        tools:layout="@layout/fragment_definicoes" />
 </navigation>

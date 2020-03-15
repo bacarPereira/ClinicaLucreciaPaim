@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.example.clinicalucreciapain.SplashFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.inicial.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash" >
         <action
@@ -15,10 +15,20 @@
             app:destination="@id/telaInicialFragment"
             app:popUpTo="@+id/splashFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_inicialSessaoPacienteFragment2"
+            app:destination="@id/inicialSessaoPacienteFragment2"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_hostFragmentActividades"
+            app:destination="@id/hostFragmentMedico"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/telaInicialFragment"
-        android:name="com.example.clinicalucreciapain.TelaInicialFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.secundarioPaciente.TelaIniciaLoginFragment"
         android:label="fragment_tela_inicial"
         tools:layout="@layout/fragment_tela_inicial" >
         <action
@@ -26,10 +36,98 @@
             app:destination="@id/inicialSessaoPacienteFragment2"
             app:popUpTo="@+id/telaInicialFragment"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_telaInicialFragment_to_hostFragmentMedico"
+            app:destination="@id/hostFragmentMedico"
+            app:popUpTo="@+id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/inicialSessaoPacienteFragment2"
-        android:name="com.example.clinicalucreciapain.InicialSessaoPacienteFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.hosts.InicialSessaoPacienteFragment"
         android:label="fragment_inicial_sessao_paciente"
-        tools:layout="@layout/fragment_inicial_sessao_paciente" />
+        tools:layout="@layout/fragment_inicial_sessao_paciente" >
+        <action
+            android:id="@+id/action_inicialSessaoPacienteFragment2_to_meuMedicoFragment2"
+            app:destination="@id/meuMedicoFragment2" />
+        <action
+            android:id="@+id/action_inicialSessaoPacienteFragment2_to_minhasConsultasFragment"
+            app:destination="@id/minhasConsultasFragment" />
+        <action
+            android:id="@+id/action_inicialSessaoPacienteFragment2_to_proximaConsultaFragment"
+            app:destination="@id/proximaConsultaFragment" />
+        <action
+            android:id="@+id/action_inicialSessaoPacienteFragment2_to_telaInicialFragment"
+            app:destination="@id/telaInicialFragment"
+            app:popUpTo="@+id/inicialSessaoPacienteFragment2"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_inicialSessaoPacienteFragment2_to_meuCartGestanteFragment2"
+            app:destination="@id/meuCartGestanteFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/meuMedicoFragment2"
+        android:name="com.example.clinicalucreciapain.fragmentos.navegacao_actividades.MeuMedicoFragment"
+        android:label="MeuMedicoFragment" />
+    <fragment
+        android:id="@+id/minhasConsultasFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.navegacao_actividades.MinhasConsultasFragment"
+        android:label="fragment_minhas_consultas"
+        tools:layout="@layout/fragment_minhas_consultas" />
+    <fragment
+        android:id="@+id/proximaConsultaFragment"
+        android:name="com.example.clinicalucreciapain.fragmentos.navegacao_actividades.ProximaConsultaFragment"
+        android:label="fragment_proxima_consulta"
+        tools:layout="@layout/fragment_proxima_consulta" />
+    <fragment
+        android:id="@+id/meuCartGestanteFragment2"
+        android:name="com.example.clinicalucreciapain.fragmentos.navegacao_actividades.MeuCartGestanteFragment"
+        android:label="MeuCartGestanteFragment" >
+        <action
+            android:id="@+id/action_meuCartGestanteFragment2_to_inicialSessaoPacienteFragment2"
+            app:destination="@id/inicialSessaoPacienteFragment2"
+            app:popUpTo="@+id/meuCartGestanteFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/hostFragmentMedico"
+        android:name="com.example.clinicalucreciapain.fragmentos.hosts.HostFragmentActividades"
+        android:label="fragment_host_medico"
+        tools:layout="@layout/fragment_host_medico" >
+        <action
+            android:id="@+id/action_hostFragmentMedico_to_telaInicialFragment"
+            app:destination="@id/telaInicialFragment"
+            app:popUpTo="@+id/hostFragmentMedico"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_hostFragmentMedico_to_finalizarConsultaFragment"
+            app:destination="@id/finalizarConsultaFragment" />
+        <action
+            android:id="@+id/action_hostFragmentMedico_to_agendarConsultaFragment"
+            app:destination="@id/agendarConsultaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/agendarConsultaFragment"
+        android:name="com.example.clinicalucreciapain.AgendarConsultaFragment"
+        android:label="fragment_agendar_consulta"
+        tools:layout="@layout/fragment_agendar_consulta" >
+        <argument
+            android:name="medico"
+            app:argType="string" />
+        <argument android:name="paciente" />
+        <action
+            android:id="@+id/action_agendarConsultaFragment_to_hostFragmentMedico"
+            app:destination="@id/hostFragmentMedico"
+            app:popUpTo="@+id/agendarConsultaFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/finalizarConsultaFragment"
+        android:name="com.example.clinicalucreciapain.FinalizarConsultaFragment"
+        android:label="fragment_finalizar_consulta"
+        tools:layout="@layout/fragment_finalizar_consulta" >
+        <action
+            android:id="@+id/action_finalizarConsultaFragment_self2"
+            app:destination="@id/finalizarConsultaFragment" />
+    </fragment>
 </navigation>

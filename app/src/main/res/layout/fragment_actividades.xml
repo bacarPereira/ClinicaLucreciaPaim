@@ -1,14 +1,211 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:fillViewport="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActividadesFragment">
+    tools:context=".fragmentos.secundarioPaciente.ActividadesFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineDireita"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="@dimen/taam_20dp" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineEsquerda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMeuCartao"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="@dimen/taam_20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
+        app:layout_constraintTop_toTopOf="parent"
+        card_view:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAzul">
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_width="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="Meu Cartão de Gestante"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageButton" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMeuMedico"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="@dimen/taam_20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
+        app:layout_constraintTop_toBottomOf="@+id/cardMeuCartao"
+        card_view:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorRoxo" >
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Meu Médico"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton2"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+
+            <ImageButton
+                android:id="@+id/imageButton2"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMinhasConsultas"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
+        app:cardElevation="@dimen/taam_20dp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
+        app:layout_constraintTop_toBottomOf="@+id/cardMeuMedico"
+        card_view:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorVerde" >
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Minhas Consultas"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageButton3" />
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardProximaConsulta"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineDireita"
+        app:layout_constraintStart_toStartOf="@+id/guidelineEsquerda"
+        app:layout_constraintTop_toBottomOf="@+id/cardMinhasConsultas"
+        app:cardElevation="@dimen/taam_20dp"
+        card_view:cardCornerRadius="4dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorLaranja" >
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Próxima Consulta"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/imageButton4"
+                app:layout_constraintEnd_toStartOf="@+id/imageButton4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/imageButton4" />
+
+            <ImageButton
+                android:id="@+id/imageButton4"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/ic_keyboard_arrow_right_white_24dp"
+                card_view:layout_constraintBottom_toBottomOf="parent"
+                card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

@@ -21,4 +21,10 @@
         android:title="@string/menu_actividades"
         android:icon="@drawable/ic_timeline_black_24dp" />
 
+    <item
+        android:id="@+id/definicoesFragment"
+        android:title="@string/menu_definicoes"
+        android:icon="@drawable/ic_settings_black_24dp"
+        />
+
 </menu>

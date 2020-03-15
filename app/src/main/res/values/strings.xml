@@ -3,12 +3,16 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="direitos_autor">Copyright © 2020 Maternidade Lucrécia Pain</string>
+    <string name="direitos_autor">Copyright © 2020 Maternidade Lucrécia Paim</string>
     <string name="text_entrar">Entrar</string>
     <string name="menu_inicio">Inicio</string>
     <string name="menu_perfil">Perfil</string>
     <string name="menu_conselho">Conselhos</string>
     <string name="menu_actividades">Actividades</string>
+    <string name="menu_definicoes">Definições</string>
     <string name="txt_recomendacoes">Recomendações</string>
     <string name="titulo">Titulo</string>
+    <string name="txt_perfil_nome">Nome</string>
+    <string name="nao">Não</string>
+    <string name="sim">Sim</string>
 </resources>

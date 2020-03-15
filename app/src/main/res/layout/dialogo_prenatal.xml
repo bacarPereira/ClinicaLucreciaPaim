@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="350dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textView17"
+        style="@style/txt_gestant_estilo_center"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="O que deseja fazer ?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/add_consulta_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toStartOf="@+id/finalizar_consulta_btn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17"
+        app:srcCompat="@drawable/ic_add_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/finalizar_consulta_btn"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/add_consulta_btn"
+        app:layout_constraintTop_toTopOf="@+id/add_consulta_btn"
+        app:srcCompat="@drawable/ic_check_black_24dp" />
+
+    <TextView
+        android:id="@+id/add_consulta_tv"
+        style="@style/txt_gestant_estilo_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"
+        android:text="Agendar Consulta"
+        android:textColor="@color/colorAzul"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/finalizar_consulta_tv"
+        app:layout_constraintHorizontal_bias="0.53"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/add_consulta_btn"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/finalizar_consulta_tv"
+        style="@style/txt_gestant_estilo_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="Finalizar Consulta"
+        android:textColor="@color/colorVerde"
+        app:layout_constraintBottom_toBottomOf="@+id/add_consulta_tv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/add_consulta_tv"
+        app:layout_constraintTop_toTopOf="@+id/add_consulta_tv" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

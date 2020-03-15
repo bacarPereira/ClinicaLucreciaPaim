@@ -1,4 +1,4 @@
-package com.example.clinicalucreciapain
+package com.example.clinicalucreciapain.fragmentos.hosts
 
 
 import android.os.Bundle
@@ -8,17 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.example.clinicalucreciapain.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class InicialSessaoPacienteFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ */
+class HostFragmentActividades : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_inicial_sessao_paciente, container, false)
+        val view = inflater.inflate(R.layout.fragment_host_medico, container, false)
 
-        val navHostFragment = childFragmentManager.findFragmentById(R.id.contentInicial) as NavHostFragment
+        val navHostFragment = childFragmentManager.findFragmentById(R.id.conteiner_medico) as NavHostFragment
 
         view.findViewById<BottomNavigationView>(R.id.bottom_navigation_)
             .setupWithNavController(navController = navHostFragment.navController)
         return view
     }
+
+
 }
