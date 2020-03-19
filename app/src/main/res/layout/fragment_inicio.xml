@@ -29,7 +29,7 @@
                 android:background="#9926C0D5">
 
                 <TextView
-                    android:id="@+id/tv_total_consultas"
+                    android:id="@+id/bebe_peso"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -42,11 +42,11 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/tv_meu_peso"
+                    app:layout_constraintStart_toStartOf="@+id/bebe_altura"
                     app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
                 <TextView
-                    android:id="@+id/tv_meu_peso"
+                    android:id="@+id/bebe_altura"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -74,7 +74,7 @@
 
                 <TextView
                     android:id="@+id/textView3"
-                    android:layout_width="0dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:gravity="end"
@@ -82,7 +82,8 @@
                     android:textColor="@android:color/white"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_meu_peso"
+                    app:layout_constraintEnd_toStartOf="@+id/bebe_altura"
+                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toEndOf="@+id/imageView4"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -95,9 +96,34 @@
                     android:textColor="@android:color/white"
                     android:textSize="12sp"
                     android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@+id/tv_total_consultas"
+                    app:layout_constraintEnd_toStartOf="@+id/bebe_peso"
                     app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_meu_peso" />
+                    app:layout_constraintTop_toBottomOf="@+id/bebe_altura" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="64dp"
+                    android:layout_marginRight="64dp"
+                    android:text="Sexo"
+                    android:textColor="@android:color/white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toTopOf="@+id/textView3" />
+
+                <TextView
+                    android:id="@+id/bebe_sexo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Masculino"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/textView3"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -161,7 +187,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_total_consultas_" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/txt_tempo_gest"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

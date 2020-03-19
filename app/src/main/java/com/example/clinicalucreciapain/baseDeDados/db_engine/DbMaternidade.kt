@@ -9,7 +9,7 @@ import com.example.clinicalucreciapain.baseDeDados.entidades.*
 
 @Database(entities = [RecomendacaoEntity::class,
     GestanteEntity::class,GestanteUserEntity::class,CartaoGestanteEntity::class
-    ,MedicoEntity::class,MedicoUserEntity::class,MinhasConsultasEntity::class], version = 1, exportSchema = false)
+    ,MedicoEntity::class,MedicoUserEntity::class,MinhasConsultasEntity::class,BebeEntity::class], version = 1, exportSchema = false)
 abstract class DbMaternidade:RoomDatabase() {
 
     abstract fun recomendacaoDao(): RecomendacaoDao
@@ -19,6 +19,7 @@ abstract class DbMaternidade:RoomDatabase() {
     abstract fun medicoEntity(): MedicoDao
     abstract fun medicoUserEntity(): MedicoUserDao
     abstract fun minhasConsultas(): MinhasConsultasDao
+    abstract fun bebeDao(): BebeDao
 
     companion object{
         @Volatile

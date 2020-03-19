@@ -2,7 +2,6 @@ package com.example.clinicalucreciapain.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.clinicalucreciapain.R
@@ -20,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         gestanteViewModel = ViewModelProviders.of(this).get(GestanteViewModel::class.java)
         cartaoGestanteViewModel = ViewModelProviders.of(this).get(CartaoGestanteViewModel::class.java)
         minhasConsultasViewModel = ViewModelProviders.of(this).get(MinhasConsultasViewModel::class.java)
+        bebeViewModel = ViewModelProviders.of(this).get(BebeViewModel::class.java)
 
 
         recomendacaoViewModel.recomendacao.observe(this@MainActivity, Observer { recomendacoes ->
@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
                 salvarGestante(gestanteViewModel)
                 salvarCartaoGestante(cartaoGestanteViewModel)
                 salvarMinhasCOnsultas(minhasConsultasViewModel)
+                salvarMeuBebe(bebeViewModel)
             }
         })
     }
@@ -189,6 +190,14 @@ class MainActivity : AppCompatActivity() {
         minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"10:00 , 20-03-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
         minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"11:30 , 17-04-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
         minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio, estados_consulta.get(0),"14:30 , 13-05-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
+
+    }
+
+    private fun salvarMeuBebe(bebeViewModel: BebeViewModel) {
+
+        bebeViewModel.inserir(BebeEntity(0,100f,150f,"005819182LA955","Feminino","1 semana e 2 dias"))
+        bebeViewModel.inserir(BebeEntity(0,140f,150f,"015812182LA945","Masculino","10 semanas e 6 dias"))
+        bebeViewModel.inserir(BebeEntity(0,190f,150f,"005819182LA955","Feminino","3 semana e 5 dias"))
 
     }
 }

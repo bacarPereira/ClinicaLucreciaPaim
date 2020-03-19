@@ -66,6 +66,9 @@ class MinhasConsultasAdapter(
                     txt_doctor.text = res_room[posicao].paciente
                     txt_data.text = res_room[posicao].data
                     tv_lb_med_pac.text = "Paciente. "
+                    setOnClickListener {
+                        context.mostrarMensagem(res_room[posicao].data)
+                    }
                 }
             }else{
                 itemView.apply {
