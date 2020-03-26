@@ -10,6 +10,7 @@ lateinit var cartaoGestanteViewModel: CartaoGestanteViewModel
 lateinit var medicoViewModel: MedicoViewModel
 lateinit var medicoUserViewModel: MedicoUserViewModel
 lateinit var minhasConsultasViewModel: MinhasConsultasViewModel
+lateinit var bebeViewModel: BebeViewModel
 
 const val MSG_ERRO_VAZIO_CAMPO = "Preencha o campo"
 const val msg_acarregar = "A carregar ..."

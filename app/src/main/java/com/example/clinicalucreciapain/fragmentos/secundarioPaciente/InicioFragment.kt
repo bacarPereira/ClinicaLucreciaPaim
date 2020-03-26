@@ -14,6 +14,7 @@ import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.comuns.*
 import kotlinx.android.synthetic.main.fragment_inicio.*
 import proitappsolutions.com.rumosstore.adapter.RecomendacoesAdapeter
+import proitdevelopers.com.bloomberg.viewModel.BebeViewModel
 import proitdevelopers.com.bloomberg.viewModel.GestanteUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 import proitdevelopers.com.bloomberg.viewModel.RecomendacaoViewModel
@@ -25,6 +26,7 @@ class InicioFragment : Fragment() {
         recomendacaoViewModel = ViewModelProviders.of(this).get(RecomendacaoViewModel::class.java)
         gestanteUserViewModel = ViewModelProviders.of(this).get(GestanteUserViewModel::class.java)
         minhasConsultasViewModel = ViewModelProviders.of(this).get(MinhasConsultasViewModel::class.java)
+        bebeViewModel = ViewModelProviders.of(this).get(BebeViewModel::class.java)
 
         return inflater.inflate(R.layout.fragment_inicio, container, false)
     }
@@ -38,9 +40,14 @@ class InicioFragment : Fragment() {
                 txt_meu_peso.text = "Meu Peso - ${it.get(0).peso}"
 
                 minhasConsultasViewModel.minhasConsultas(it.get(0).nome, estados_consulta.get(1)).observe(this,
-                    Observer {
-                        tv_total_consultas_.text = "Total de consultas feitas - ${it.size}"
-                    })
+                    Observer { tv_total_consultas_.text = "Total de consultas feitas - ${it.size}" })
+
+                bebeViewModel.getMyBaby(it.get(0).bi).observe(this, Observer {
+                    bebe_sexo.text = it.sexo
+                    bebe_altura.text = it.altura.toString().plus(" mm")
+                    bebe_peso.text = it.peso.toString().plus(" g")
+                    txt_tempo_gest.text = it.tempoGestancional
+                })
             }
         })
 

@@ -18,9 +18,6 @@ import proitappsolutions.com.rumosstore.adapter.MinhasPacientesAdapter
 import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
-/**
- * A simple [Fragment] subclass.
- */
 class
 ActividadesMedicoFragment : Fragment() {
 
