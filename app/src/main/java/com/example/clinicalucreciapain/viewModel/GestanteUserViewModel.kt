@@ -9,7 +9,7 @@ import com.example.clinicalucreciapain.baseDeDados.db_engine.DbMaternidade
 import com.example.clinicalucreciapain.baseDeDados.entidades.GestanteUserEntity
 
 class GestanteUserViewModel(application:Application):AndroidViewModel(application) {
-
+//
     private val dao: GestanteUserDao
     internal val gestante:LiveData<List<GestanteUserEntity>>
 
