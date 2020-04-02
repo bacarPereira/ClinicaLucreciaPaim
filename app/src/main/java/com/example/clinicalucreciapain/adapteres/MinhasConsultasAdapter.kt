@@ -112,9 +112,10 @@ class MinhasConsultasAdapter(
                             estados_consulta.get(1),res_room.get(posicao).data,res_room.get(posicao).paciente,res_room.get(posicao).medico))
                         edt_data_consulta2?.text?.clear()
                         dialog_finalizar_consulta?.dismiss()
-                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(FinalizarConsultaFragmentDirections.actionFinalizarConsultaFragmentSelf2())
+                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(FinalizarConsultaFragmentDirections.actionFinalizarConsultaFragmentSelf())
                         activity?.let { it1 -> esconderTeclado(it1) }
                         notifyDataSetChanged()
+                        activity?.getFragmentManager()?.popBackStack()
                         context.mostrarMensagem("Consulta finalizada com sucesso!!")
 
                     }

@@ -157,7 +157,7 @@
         android:label="fragment_finalizar_consulta"
         tools:layout="@layout/fragment_finalizar_consulta" >
         <action
-            android:id="@+id/action_finalizarConsultaFragment_self2"
+            android:id="@+id/action_finalizarConsultaFragment_self"
             app:destination="@id/finalizarConsultaFragment" />
     </fragment>
 </navigation>
