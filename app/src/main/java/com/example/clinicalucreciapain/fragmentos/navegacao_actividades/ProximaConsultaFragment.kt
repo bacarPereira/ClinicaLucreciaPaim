@@ -18,9 +18,6 @@ import kotlinx.android.synthetic.main.fragment_proxima_consulta.*
 import proitdevelopers.com.bloomberg.viewModel.GestanteUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
-/**
- * A simple [Fragment] subclass.
- */
 class ProximaConsultaFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
