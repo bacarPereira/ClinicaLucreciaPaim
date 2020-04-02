@@ -26,6 +26,7 @@ class ProximaConsultaFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_proxima_consulta, container, false)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
