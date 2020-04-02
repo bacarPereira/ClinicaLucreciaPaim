@@ -15,4 +15,6 @@
     <string name="txt_perfil_nome">Nome</string>
     <string name="nao">Não</string>
     <string name="sim">Sim</string>
+    <string name="marcar_consulta">Marcar Consulta Pre-Natal</string>
+    <string name="remarcar_consulta">Remarcar Consulta Pre-Natal</string>
 </resources>

@@ -11,6 +11,8 @@ import proitdevelopers.com.bloomberg.viewModel.*
 
 class MainActivity : AppCompatActivity() {
 
+    val senha = 12345
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -153,9 +155,9 @@ class MainActivity : AppCompatActivity() {
         val medica2 = "android.resource://com.example.clinicalucreciapain/drawable/medica_um"
         val medico3 = "android.resource://com.example.clinicalucreciapain/drawable/medico_dois"
 
-        medicoViewModel.inserir(MedicoEntity(0,"Joaquim Ferreira","001728", sexo.get(1),nacionalidade.get(0),"01-01-1987","joaq@mins.gov.ao","001829394LA918","937462533","jq1987",medico1))
-        medicoViewModel.inserir(MedicoEntity(0,"Maria Salmatierra","918267", sexo.get(0),nacionalidade.get(1),"01-01-1987","maria@mins.gov.ao","00LA5162","917423463","ms1887",medica2))
-        medicoViewModel.inserir(MedicoEntity(0,"Miguel Morais","888227", sexo.get(1),nacionalidade.get(2),"01-01-1980","miguelm@mins.gov.ao","30LA4155","937423455","mm1980",medico3))
+        medicoViewModel.inserir(MedicoEntity(0,"Joaquim Ferreira","0001", sexo.get(1),nacionalidade.get(0),"01-01-1987","joaq@mins.gov.ao","00001","930000000",senha.toString(),medico1))
+        medicoViewModel.inserir(MedicoEntity(0,"Maria Salmatierra","0002", sexo.get(0),nacionalidade.get(1),"01-01-1987","maria@mins.gov.ao","00002","930000001",senha.toString(),medica2))
+        medicoViewModel.inserir(MedicoEntity(0,"Miguel Morais","0003", sexo.get(1),nacionalidade.get(2),"01-01-1980","miguelm@mins.gov.ao","00003","930000002",senha.toString(),medico3))
 
     }
 
@@ -165,10 +167,10 @@ class MainActivity : AppCompatActivity() {
         val paciente2 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_dois"
         val paciente3 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_tres"
 
-        gestanteViewModel.inserir(GestanteEntity(0,"Elizabeth Da Costa Pina","005819182LA955","Angolana", "66.7","1.70", sexo.get(0),"O+", raca.get(0),"Luanda", "Catambor","Catambor","Belas","923637722","elizabth@gmail.com", "11-11-1990","elizabth95","001728",paciente1,"Joaquim Ferreira"))
-        gestanteViewModel.inserir(GestanteEntity(0,"Maria Florentina","015812182LA945","Angolana", "77.7","1.60",sexo.get(0),"O-", raca.get(1),"Luanda", "Maianga","Maianga","Belas","923557725","mariaflorentina@hotmail.com", "09-02-1985","maria85","918267",paciente2,"Maria Salmatierra"))
-        gestanteViewModel.inserir(GestanteEntity(0,"Josefina Armando","005819182LA955","Angolana", "66.7","1.70",sexo.get(0),"O+", raca.get(0),"Luanda", "Sunset","Sunset","Belas","923633766","josejinaarmando@hotmail.com", "02-06-1987","josefina87","888227",paciente3,"Miguel Morais"))
-        gestanteViewModel.inserir(GestanteEntity(0,"Daniela Armando","005819182LA922","Angolana", "66.7","1.70",sexo.get(0),"O+", raca.get(0),"Luanda", "Sunset","Sunset","Belas","923633711","josejinaarmando@hotmail.com", "02-06-1987","daniela87","888227",paciente3,"Miguel Morais"))
+        gestanteViewModel.inserir(GestanteEntity(0,"Elizabeth Da Costa Pina","005819182LA955","Angolana", "66.7","1.70", sexo.get(0),"O+", raca.get(0),"Luanda", "Catambor","Catambor","Belas","920000000","elizabth@gmail.com", "11-11-1990",senha.toString(),"0001",paciente1,"Joaquim Ferreira"))
+        gestanteViewModel.inserir(GestanteEntity(0,"Maria Florentina","015812182LA945","Angolana", "77.7","1.60",sexo.get(0),"O-", raca.get(1),"Luanda", "Maianga","Maianga","Belas","920000001","mariaflorentina@gmail.com", "09-02-1985",senha.toString(),"0002",paciente2,"Maria Salmatierra"))
+        gestanteViewModel.inserir(GestanteEntity(0,"Josefina Armando","005819182LA955","Angolana", "66.7","1.70",sexo.get(0),"O+", raca.get(0),"Luanda", "Sunset","Sunset","Belas","920000002","josejinaarmando@gmail.com", "02-06-1987",senha.toString(),"0003",paciente3,"Miguel Morais"))
+        gestanteViewModel.inserir(GestanteEntity(0,"Daniela Armando","005819182LA922","Angolana", "66.7","1.70",sexo.get(0),"O+", raca.get(0),"Luanda", "Sunset","Sunset","Belas","920000003","josejinaarmando@gmail.com", "02-06-1987",senha.toString(),"0003",paciente3,"Miguel Morais"))
 
     }
 
@@ -176,9 +178,9 @@ class MainActivity : AppCompatActivity() {
         val paciente1 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_um"
         val paciente2 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_dois"
         val paciente3 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_tres"
-        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Elizabeth Da Costa Pina","25", estado_civil.get(0),habilidade_literaria.get(0), "Augusto Pina","Ingombota", "Hotel Diamante", "923446633","1","1","0","1","0",paciente1))
-        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Maria Florentina","33", estado_civil.get(1),habilidade_literaria.get(1), "Miguel Francisco","Maianga", "Hotel Tivoli", "923446674","5","3","1","2","1",paciente2))
-        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Josefina Armando","40", estado_civil.get(1),habilidade_literaria.get(1), "Augusto Pina","Sunset", "Hotel Rancho Del Tesouro", "923434723","3","2","0","2","0",paciente3))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Elizabeth Da Costa Pina","25", estado_civil.get(0),habilidade_literaria.get(0), "Augusto Pina","Ingombota", "Hotel Diamante", "999999991","1","1","0","1","0",paciente1))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Maria Florentina","33", estado_civil.get(1),habilidade_literaria.get(1), "Miguel Francisco","Maianga", "Hotel Tivoli", "999999992","5","3","1","2","1",paciente2))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Josefina Armando","40", estado_civil.get(1),habilidade_literaria.get(1), "Augusto Pina","Sunset", "Hotel Rancho Del Tesouro", "999999993","3","2","0","2","0",paciente3))
     }
 
     private fun salvarMinhasCOnsultas(minhasConsultasViewModel: MinhasConsultasViewModel) {

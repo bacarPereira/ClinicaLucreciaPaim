@@ -48,11 +48,11 @@ tools:context=".AgendarConsultaFragment">
         android:background="@color/colorAzul">
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/acao_editavel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Marcar Consulta Pre-Natal"
+            android:text="@string/marcar_consulta"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold"

@@ -49,7 +49,7 @@
             android:background="@color/colorVerde">
 
             <TextView
-                android:id="@+id/textView6"
+                android:id="@+id/acao_editavel"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="center"

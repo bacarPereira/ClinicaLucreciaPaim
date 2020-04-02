@@ -2,6 +2,7 @@ package proitappsolutions.com.rumosstore.adapter
 
 import android.app.Dialog
 import android.content.Context
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +13,8 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.baseDeDados.entidades.GestanteEntity
+import com.example.clinicalucreciapain.comuns.nulo
+import com.example.clinicalucreciapain.comuns.semInt
 import com.example.clinicalucreciapain.fragmentos.hosts.HostFragmentActividadesDirections
 import kotlinx.android.synthetic.main.item_minhas_pacientes.view.*
 
@@ -73,11 +76,18 @@ class MinhasPacientesAdapter(
 
                 add_consulta_tv?.setOnClickListener {
                     dialog_pre_natal?.dismiss()
-                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToAgendarConsultaFragment(res_room[posicao].medico_nome,res_room[posicao].nome))
+                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections
+                        .actionHostFragmentMedicoToAgendarConsultaFragment(
+                            res_room[posicao].medico_nome,res_room[posicao].nome,
+                            context.resources.getString(R.string.marcar_consulta),false,nulo,nulo,nulo,nulo,
+                            semInt))
                 }
                 add_consulta_btn?.setOnClickListener {
                     dialog_pre_natal?.dismiss()
-                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToAgendarConsultaFragment(res_room[posicao].medico_nome,res_room[posicao].nome))
+                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToAgendarConsultaFragment(
+                        res_room[posicao].medico_nome,res_room[posicao].nome,
+                        context.resources.getString(R.string.marcar_consulta),false,nulo,nulo,nulo,nulo,
+                        semInt))
                 }
 
                 finalizar_consulta_btn?.setOnClickListener {dialog_pre_natal?.dismiss()

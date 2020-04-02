@@ -42,8 +42,8 @@
             android:id="@+id/textUsuarioSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="elizabth95"
             android:inputType="textPassword"
+            android:text="12345"
             android:textColor="@android:color/black"
             android:textSize="14sp" />
     </com.google.android.material.textfield.TextInputLayout>

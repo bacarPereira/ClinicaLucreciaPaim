@@ -31,13 +31,33 @@ class AgendarConsultaFragment : Fragment() {
     var mDateSetListener: DatePickerDialog.OnDateSetListener? = null
     var progressDialog: ProgressDialog? = null
 
+    var remarcar_agenda = false
+    var relatorio:String = ""
+    var estado:String = ""
+    var idConsulta = semInt
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         val view = inflater.inflate(R.layout.fragment_agendar_consulta, container, false)
         minhasConsultasViewModel = ViewModelProviders.of(this).get(MinhasConsultasViewModel::class.java)
 
         medico = AgendarConsultaFragmentArgs.fromBundle(arguments!!).medico
-         paciente = AgendarConsultaFragmentArgs.fromBundle(arguments!!).paciente
+        paciente = AgendarConsultaFragmentArgs.fromBundle(arguments!!).paciente
+        remarcar_agenda = AgendarConsultaFragmentArgs.fromBundle(arguments!!).remarcarAgendar
+
+        if(remarcar_agenda){
+            data = AgendarConsultaFragmentArgs.fromBundle(arguments!!).hora.toString()
+            hora = AgendarConsultaFragmentArgs.fromBundle(arguments!!).data.toString().trim()
+            relatorio = AgendarConsultaFragmentArgs.fromBundle(arguments!!).relatorio.toString()
+            estado = AgendarConsultaFragmentArgs.fromBundle(arguments!!).estadoConsulta.toString()
+            idConsulta = AgendarConsultaFragmentArgs.fromBundle(arguments!!).idConsulta
+            view.btn_confirmar.text = "Remarcar Consulta"
+
+            view.edt_hora.setText(hora)
+            view.edt_data_consulta.setText(data)
+        }
+
+        view.acao_editavel.text = AgendarConsultaFragmentArgs.fromBundle(arguments!!).accaoAgendamento
 
         paciente.let { view.txt_paciente.text = "Paciente - " + it }
         progressDialog(view.context)
@@ -96,9 +116,15 @@ class AgendarConsultaFragment : Fragment() {
         Handler().postDelayed(object : Runnable {
             override fun run() {
                 progressDialog?.dismiss()
-                minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
-                activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(AgendarConsultaFragmentDirections.actionAgendarConsultaFragmentToHostFragmentMedico())
-                context?.mostrarMensagem("Consulta marcada com sucesso !!")
+                if (remarcar_agenda){
+                    minhasConsultasViewModel.update(MinhasConsultasEntity(idConsulta, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
+                    getFragmentManager()?.popBackStack()
+                    context?.mostrarMensagem("Consulta atualizada com sucesso !!")
+                }else{
+                    minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
+                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(AgendarConsultaFragmentDirections.actionAgendarConsultaFragmentToHostFragmentMedico())
+                    context?.mostrarMensagem("Consulta marcada com sucesso !!")
+                }
             }
         }, TEMPO_RUN.toLong())
     }

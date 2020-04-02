@@ -2,6 +2,7 @@ package proitappsolutions.com.rumosstore.adapter
 
 import android.app.Dialog
 import android.content.Context
+import android.content.res.Resources
 import android.text.TextUtils
 import android.util.Log
 import android.view.LayoutInflater
@@ -18,6 +19,7 @@ import com.example.clinicalucreciapain.FinalizarConsultaFragmentDirections
 import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.baseDeDados.entidades.MinhasConsultasEntity
 import com.example.clinicalucreciapain.comuns.*
+import com.example.clinicalucreciapain.fragmentos.hosts.HostFragmentActividadesDirections
 import kotlinx.android.synthetic.main.fragment_tela_inicial.view.*
 import kotlinx.android.synthetic.main.item_minhas_consultas.view.*
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
@@ -67,7 +69,14 @@ class MinhasConsultasAdapter(
                     txt_data.text = res_room[posicao].data
                     tv_lb_med_pac.text = "Paciente. "
                     setOnClickListener {
-                        context.mostrarMensagem(res_room[posicao].data)
+                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(
+                            HostFragmentActividadesDirections
+                                .actionHostFragmentMedicoToAgendarConsultaFragment(
+                                    res_room[posicao].medico,res_room[posicao].paciente,
+                                    resources.getString(R.string.remarcar_consulta),true,
+                                    res_room[posicao].relatorio,res_room[posicao].estado,
+                                    res_room[posicao].data.split(",").get(1),
+                                    res_room[posicao].data.split(",").get(0),res_room[posicao].id))
                     }
                 }
             }else{
