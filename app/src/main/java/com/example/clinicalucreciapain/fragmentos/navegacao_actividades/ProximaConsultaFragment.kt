@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.comuns.estados_consulta
 import com.example.clinicalucreciapain.comuns.gestanteUserViewModel
@@ -39,9 +41,16 @@ class ProximaConsultaFragment : Fragment() {
                         txt_data_proxima_c.visibility = View.VISIBLE
                         txt_lb_medico.visibility = View.VISIBLE
                         txt_lb_data.visibility = View.VISIBLE
-
                         txt_medico_proxima_c.text = it.get(0).medico
                         txt_data_proxima_c.text = it.get(0).data
+                        val consulta = it.get(0)
+                        cartao_consulta.setOnClickListener {
+                            findNavController().navigate(ProximaConsultaFragmentDirections.actionProximaConsultaFragmentToAgendarConsultaFragment(
+                                consulta.medico,consulta.paciente,resources.getString(R.string.remarcar_consulta),true,consulta.relatorio,consulta.estado,
+                                consulta.data.split(",").get(1),
+                                consulta.data.split(",").get(0),consulta.id
+                            ))
+                        }
                     }else{
                         txt_info_sem_consulta.visibility = View.VISIBLE
                         txt_lb_medico.visibility = View.GONE
@@ -52,6 +61,7 @@ class ProximaConsultaFragment : Fragment() {
                 })
         })
         imgb_voltar.setOnClickListener { getFragmentManager()?.popBackStack() }
+
     }
 
 

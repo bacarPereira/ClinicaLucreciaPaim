@@ -78,7 +78,11 @@
         android:id="@+id/proximaConsultaFragment"
         android:name="com.example.clinicalucreciapain.fragmentos.navegacao_actividades.ProximaConsultaFragment"
         android:label="fragment_proxima_consulta"
-        tools:layout="@layout/fragment_proxima_consulta" />
+        tools:layout="@layout/fragment_proxima_consulta" >
+        <action
+            android:id="@+id/action_proximaConsultaFragment_to_agendarConsultaFragment"
+            app:destination="@id/agendarConsultaFragment" />
+    </fragment>
     <fragment
         android:id="@+id/meuCartGestanteFragment2"
         android:name="com.example.clinicalucreciapain.fragmentos.navegacao_actividades.MeuCartGestanteFragment"
