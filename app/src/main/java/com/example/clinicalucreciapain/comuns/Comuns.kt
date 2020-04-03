@@ -15,6 +15,7 @@ const val MSG_ERRO_VAZIO_CAMPO = "Preencha o campo"
 const val msg_acarregar = "A carregar ..."
 const val ola_gest = "Olá, "
 const val unidade_sanitaria = "Lucrêcia Pain"
+const val msgSemInternet = "A rede 3G ou WI-FI não possui tranferência de dados."
 const val relatorio_consulta = "O bebé está saudavel sem nenhuma complicação.\n\n " +
         "Na próxima consulta será examinado outros aspectos que garantem o bom estado do bebé.\n\n"
 
