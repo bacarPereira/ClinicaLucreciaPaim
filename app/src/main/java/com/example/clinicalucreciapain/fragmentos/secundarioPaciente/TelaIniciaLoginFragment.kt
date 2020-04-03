@@ -68,6 +68,7 @@ class TelaIniciaLoginFragment : Fragment() {
             view.txt_med.setTextColor(resources.getColor(R.color.colorBlack))
             gest = true
             medi = false
+            view.textInputUsuario.hint = "Email ou nº Telefone"
         }
 
         view.txt_med.setOnClickListener {
@@ -75,6 +76,7 @@ class TelaIniciaLoginFragment : Fragment() {
             view.txt_gestant.setTextColor(resources.getColor(R.color.colorBlack))
             gest = false
             medi = true
+            view.textInputUsuario.hint = "Número Da Ordem"
         }
     }
 
