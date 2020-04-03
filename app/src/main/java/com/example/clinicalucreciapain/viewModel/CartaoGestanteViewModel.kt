@@ -5,12 +5,8 @@ import android.os.AsyncTask
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import com.example.clinicalucreciapain.baseDeDados.dao.CartaoGestanteDao
-import com.example.clinicalucreciapain.baseDeDados.dao.GestanteDao
-import com.example.clinicalucreciapain.baseDeDados.dao.RecomendacaoDao
 import com.example.clinicalucreciapain.baseDeDados.db_engine.DbMaternidade
 import com.example.clinicalucreciapain.baseDeDados.entidades.CartaoGestanteEntity
-import com.example.clinicalucreciapain.baseDeDados.entidades.GestanteEntity
-import com.example.clinicalucreciapain.baseDeDados.entidades.RecomendacaoEntity
 
 class CartaoGestanteViewModel(application:Application):AndroidViewModel(application) {
 

@@ -2,15 +2,17 @@ package com.example.clinicalucreciapain
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clinicalucreciapain.comuns.*
+import com.example.clinicalucreciapain.comuns.estados_consulta
+import com.example.clinicalucreciapain.comuns.medicoUserViewModel
+import com.example.clinicalucreciapain.comuns.minhasConsultasViewModel
 import kotlinx.android.synthetic.main.fragment_inicio_medico.*
 import proitappsolutions.com.rumosstore.adapter.MinhasConsultasAdapter
 import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel

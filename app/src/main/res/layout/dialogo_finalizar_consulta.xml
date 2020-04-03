@@ -12,17 +12,18 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:gravity="top|left"
         android:hint="Relatório da Consulta"
         android:lines="8"
-        android:minLines="4"
-        android:gravity="top|left"
         android:maxLines="5"
+        android:minLines="4"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputSemanas" />
 
     <TextView
         android:id="@+id/textView17"
@@ -39,7 +40,7 @@
         android:id="@+id/finalizar_consulta_btn"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:background="@android:color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,5 +49,153 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_data_consulta2"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/ic_check_black_24dp" />
+
+    <CheckBox
+        android:id="@+id/cBEcografia"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Ecografia"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputAltura"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Altura"
+        android:theme="@style/EditTextEstilo"
+        app:layout_constraintEnd_toStartOf="@+id/textInputPeso"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editAltura"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="2.010"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="149dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputPeso"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Peso"
+        android:theme="@style/EditTextEstilo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textInputAltura"
+        app:layout_constraintTop_toTopOf="@+id/textInputAltura">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editPeso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:text="2.010"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="149dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputSemanas"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Semanas"
+        android:theme="@style/EditTextEstilo"
+        app:layout_constraintEnd_toStartOf="@+id/textInputUsuarioSenha"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textInputAltura">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editSemanas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="2"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="149dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputUsuarioSenha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Dias"
+        android:theme="@style/EditTextEstilo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textInputSemanas"
+        app:layout_constraintTop_toBottomOf="@+id/textInputPeso">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editDias"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="numberDecimal"
+            android:text="7"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            tools:layout_editor_absoluteX="56dp"
+            tools:layout_editor_absoluteY="149dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:gravity="center"
+        android:text="Dados da Ecografia"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cBEcografia" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupEcografia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="textInputUsuarioSenha,textInputSemanas,textInputPeso,textInputAltura,textView6" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

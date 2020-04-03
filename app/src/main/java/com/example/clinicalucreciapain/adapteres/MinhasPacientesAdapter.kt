@@ -2,7 +2,6 @@ package proitappsolutions.com.rumosstore.adapter
 
 import android.app.Dialog
 import android.content.Context
-import android.content.res.Resources
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -15,7 +14,10 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.baseDeDados.entidades.GestanteEntity
-import com.example.clinicalucreciapain.comuns.*
+import com.example.clinicalucreciapain.comuns.estados_consulta
+import com.example.clinicalucreciapain.comuns.minhasConsultasViewModel
+import com.example.clinicalucreciapain.comuns.nulo
+import com.example.clinicalucreciapain.comuns.semInt
 import com.example.clinicalucreciapain.fragmentos.hosts.HostFragmentActividadesDirections
 import kotlinx.android.synthetic.main.item_minhas_pacientes.view.*
 

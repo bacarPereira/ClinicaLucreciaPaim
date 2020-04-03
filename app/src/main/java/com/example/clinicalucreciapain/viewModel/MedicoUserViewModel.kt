@@ -4,10 +4,8 @@ import android.app.Application
 import android.os.AsyncTask
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import com.example.clinicalucreciapain.baseDeDados.dao.MedicoDao
 import com.example.clinicalucreciapain.baseDeDados.dao.MedicoUserDao
 import com.example.clinicalucreciapain.baseDeDados.db_engine.DbMaternidade
-import com.example.clinicalucreciapain.baseDeDados.entidades.MedicoEntity
 import com.example.clinicalucreciapain.baseDeDados.entidades.MedicoUserEntity
 
 class MedicoUserViewModel(application:Application):AndroidViewModel(application) {

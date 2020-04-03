@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.os.Handler
 import android.text.TextUtils
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -146,9 +146,9 @@ class TelaIniciaLoginFragment : Fragment() {
             Log.i("log_user",email)
         }
 
-        view.textUsuarioSenha?.let {
-            view.context.limparErroEditTxt(view.textUsuarioSenha)
-            senha = view.textUsuarioSenha.text.toString()
+        view.editAltura?.let {
+            view.context.limparErroEditTxt(view.editAltura)
+            senha = view.editAltura.text.toString()
             Log.i("log_user",senha)
         }
 
@@ -158,7 +158,7 @@ class TelaIniciaLoginFragment : Fragment() {
         }
 
         if (TextUtils.isEmpty(senha)) {
-            view.context.erroEditText(view.textUsuarioSenha, MSG_ERRO_VAZIO_CAMPO)
+            view.context.erroEditText(view.editAltura, MSG_ERRO_VAZIO_CAMPO)
             return false
         }
 

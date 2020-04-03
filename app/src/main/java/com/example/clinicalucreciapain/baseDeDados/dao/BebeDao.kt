@@ -1,11 +1,12 @@
 package com.example.clinicalucreciapain.baseDeDados.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Insert
+import androidx.room.Query
+import androidx.room.Update
 import com.example.clinicalucreciapain.baseDeDados.entidades.BebeEntity
-import com.example.clinicalucreciapain.baseDeDados.entidades.GestanteEntity
-import com.example.clinicalucreciapain.baseDeDados.entidades.GestanteUserEntity
-import com.example.clinicalucreciapain.baseDeDados.entidades.RecomendacaoEntity
+
 @Dao
 interface BebeDao {
     @Insert

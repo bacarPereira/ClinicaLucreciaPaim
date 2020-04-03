@@ -1,7 +1,6 @@
 package proitappsolutions.com.rumosstore.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,6 @@ import com.bumptech.glide.Glide
 import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.baseDeDados.entidades.RecomendacaoEntity
 import com.example.clinicalucreciapain.fragmentos.secundarioPaciente.InicioFragmentDirections
-import com.example.clinicalucreciapain.modelo.Recomendacao
 import kotlinx.android.synthetic.main.item_rewcomendacoes_item.view.*
 
 class RecomendacoesAdapeterSub(

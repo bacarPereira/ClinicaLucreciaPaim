@@ -3,22 +3,20 @@ package com.example.clinicalucreciapain.fragmentos.inicial
 
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.example.clinicalucreciapain.R
-import com.example.clinicalucreciapain.baseDeDados.entidades.MedicoUserEntity
 import com.example.clinicalucreciapain.comuns.gest
 import com.example.clinicalucreciapain.comuns.gestanteUserViewModel
 import com.example.clinicalucreciapain.comuns.medi
 import com.example.clinicalucreciapain.comuns.medicoUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.GestanteUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel
-import proitdevelopers.com.bloomberg.viewModel.MedicoViewModel
 
 class SplashFragment : Fragment() {
 

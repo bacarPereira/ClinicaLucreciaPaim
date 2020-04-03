@@ -2,25 +2,21 @@ package proitappsolutions.com.rumosstore.adapter
 
 import android.app.Dialog
 import android.content.Context
-import android.content.res.Resources
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import android.widget.ImageButton
-import android.widget.TextView
+import android.widget.*
+import androidx.constraintlayout.widget.Group
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.clinicalucreciapain.FinalizarConsultaFragment
 import com.example.clinicalucreciapain.FinalizarConsultaFragmentDirections
 import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.baseDeDados.entidades.MinhasConsultasEntity
 import com.example.clinicalucreciapain.comuns.*
 import com.example.clinicalucreciapain.fragmentos.hosts.HostFragmentActividadesDirections
-import kotlinx.android.synthetic.main.fragment_tela_inicial.view.*
+import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.item_minhas_consultas.view.*
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
@@ -38,6 +34,12 @@ class MinhasConsultasAdapter(
     var finalizar_consulta_btn: ImageButton? = null
     var edt_data_consulta2: EditText? = null
     var dialog_resum_txt: TextView? = null
+    var cBEcografia: CheckBox? = null
+    var editAltura: TextInputEditText? = null
+    var editPeso: TextInputEditText? = null
+    var editSemanas: TextInputEditText? = null
+    var editDias: TextInputEditText? = null
+    var groupEcografia: Group? = null
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_minhas_consultas, p0, false)
@@ -93,6 +95,14 @@ class MinhasConsultasAdapter(
             if (finalizar_consulta){
                 itemView.setOnClickListener {
                     dialog_finalizar_consulta?.show()
+                        cBEcografia?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
+             override fun onCheckedChanged(p0: CompoundButton?, mostar: Boolean) {
+                 if (mostar)
+                     groupEcografia?.visibility = View.VISIBLE
+                 else
+                     groupEcografia?.visibility = View.GONE
+             }
+                })
                 }
 
                 finalizar_consulta_btn?.setOnClickListener {
@@ -136,6 +146,14 @@ class MinhasConsultasAdapter(
         dialog_finalizar_consulta?.setContentView(R.layout.dialogo_finalizar_consulta)
         finalizar_consulta_btn = dialog_finalizar_consulta?.findViewById(R.id.finalizar_consulta_btn)
         edt_data_consulta2 = dialog_finalizar_consulta?.findViewById(R.id.edt_data_consulta2)
+
+        cBEcografia = dialog_finalizar_consulta?.findViewById(R.id.cBEcografia)
+        editAltura = dialog_finalizar_consulta?.findViewById(R.id.editAltura)
+        editPeso = dialog_finalizar_consulta?.findViewById(R.id.editPeso)
+        editSemanas = dialog_finalizar_consulta?.findViewById(R.id.editSemanas)
+        editDias = dialog_finalizar_consulta?.findViewById(R.id.editDias)
+        groupEcografia = dialog_finalizar_consulta?.findViewById(R.id.groupEcografia)
+
 
     }
 

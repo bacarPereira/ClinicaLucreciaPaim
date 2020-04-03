@@ -1,6 +1,5 @@
 package com.example.clinicalucreciapain.comuns
 
-import com.example.clinicalucreciapain.baseDeDados.entidades.MedicoUserEntity
 import proitdevelopers.com.bloomberg.viewModel.*
 
 lateinit var recomendacaoViewModel: RecomendacaoViewModel

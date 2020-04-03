@@ -3,22 +3,20 @@ package com.example.clinicalucreciapain
 
 import android.app.Dialog
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.findNavController
 import com.example.clinicalucreciapain.comuns.gest
 import com.example.clinicalucreciapain.comuns.gestanteUserViewModel
-import com.example.clinicalucreciapain.comuns.gestanteViewModel
 import com.example.clinicalucreciapain.comuns.medicoUserViewModel
 import com.example.clinicalucreciapain.fragmentos.hosts.HostFragmentActividadesDirections
 import com.example.clinicalucreciapain.fragmentos.hosts.InicialSessaoPacienteFragmentDirections
 import kotlinx.android.synthetic.main.dialogo_sair.*
 import kotlinx.android.synthetic.main.fragment_definicoes.view.*
 import proitdevelopers.com.bloomberg.viewModel.GestanteUserViewModel
-import proitdevelopers.com.bloomberg.viewModel.GestanteViewModel
 import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel
 
 class DefinicoesFragment : Fragment() {
