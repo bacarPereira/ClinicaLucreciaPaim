@@ -75,46 +75,50 @@ class MinhasPacientesAdapter(
                     txt_paciente_telefone.visibility = View.GONE
                     tv_lb_telefone.visibility = View.GONE
 
+                itemView.setOnClickListener {
+                    dialog_pre_natal?.show()
 
                     activity?.let {
-                            minhasConsultasViewModel.minhasConsultas(res_room[posicao].nome, estados_consulta.get(0)).observe(activity, Observer {
-                                Log.i("dbadbkadba",it.size.toString())
-                                if (it.size>0){
-                                    add_consulta_btn?.visibility = View.GONE
-                                    add_consulta_tv?.visibility = View.GONE
-                                } else{
-                                    add_consulta_tv?.visibility = View.VISIBLE
-                                    add_consulta_btn?.visibility = View.VISIBLE
-                                    finalizar_consulta_btn?.visibility = View.GONE
-                                    finalizar_consulta_tv?.visibility = View.GONE
-                                }
-                            })
+                        minhasConsultasViewModel.minhasConsultas(res_room[posicao].nome, estados_consulta.get(0)).observe(activity, Observer {
+                            Log.i("email__",it.size.toString())
+                            if (it.size>0){
+                                add_consulta_btn?.visibility = View.GONE
+                                add_consulta_tv?.visibility = View.GONE
+                                finalizar_consulta_btn?.visibility = View.VISIBLE
+                                finalizar_consulta_tv?.visibility = View.VISIBLE
+                                Log.i("email__","maior")
+                            } else{
+                                Log.i("email__","nao maior")
+                                add_consulta_tv?.visibility = View.VISIBLE
+                                add_consulta_btn?.visibility = View.VISIBLE
+                                finalizar_consulta_btn?.visibility = View.GONE
+                                finalizar_consulta_tv?.visibility = View.GONE
+                            }
+                        })
                     }
-                }
-                itemView.setOnClickListener { dialog_pre_natal?.show() }
 
-                add_consulta_tv?.setOnClickListener {
-                    dialog_pre_natal?.dismiss()
-                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections
-                        .actionHostFragmentMedicoToAgendarConsultaFragment(
-                            res_room[posicao].medico_nome,res_room[posicao].nome,
+                    add_consulta_tv?.setOnClickListener {
+                        dialog_pre_natal?.dismiss()
+                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections
+                            .actionHostFragmentMedicoToAgendarConsultaFragment(res_room[posicao].medico_nome,res_room[posicao].nome, context.resources.getString(R.string.marcar_consulta),false,nulo,nulo,nulo,nulo, semInt))
+                    }
+                    add_consulta_btn?.setOnClickListener {
+                        dialog_pre_natal?.dismiss()
+                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToAgendarConsultaFragment(res_room[posicao].medico_nome,res_room[posicao].nome,
                             context.resources.getString(R.string.marcar_consulta),false,nulo,nulo,nulo,nulo,
                             semInt))
-                }
-                add_consulta_btn?.setOnClickListener {
-                    dialog_pre_natal?.dismiss()
-                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToAgendarConsultaFragment(
-                        res_room[posicao].medico_nome,res_room[posicao].nome,
-                        context.resources.getString(R.string.marcar_consulta),false,nulo,nulo,nulo,nulo,
-                        semInt))
+                    }
+
+                    finalizar_consulta_btn?.setOnClickListener {dialog_pre_natal?.dismiss()
+                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToFinalizarConsultaFragment())
+                    }
+                    finalizar_consulta_tv?.setOnClickListener {
+                        dialog_pre_natal?.dismiss()
+                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToFinalizarConsultaFragment())
+                    }
+
                 }
 
-                finalizar_consulta_btn?.setOnClickListener {dialog_pre_natal?.dismiss()
-                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToFinalizarConsultaFragment())
-                }
-                finalizar_consulta_tv?.setOnClickListener {
-                    dialog_pre_natal?.dismiss()
-                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(HostFragmentActividadesDirections.actionHostFragmentMedicoToFinalizarConsultaFragment())
                 }
         }
         }

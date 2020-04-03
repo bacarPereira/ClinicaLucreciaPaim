@@ -15,6 +15,7 @@ import com.example.clinicalucreciapain.comuns.medicoUserViewModel
 import com.example.clinicalucreciapain.comuns.minhasConsultasViewModel
 import kotlinx.android.synthetic.main.fragment_inicio_medico.*
 import proitappsolutions.com.rumosstore.adapter.MinhasConsultasAdapter
+import proitappsolutions.com.rumosstore.adapter.MinhasConsultasInicialMedicoAdapter
 import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
@@ -42,7 +43,7 @@ class InicioMedicoFragment : Fragment() {
                         tv_total_consultas_pendentes.text = "Total de consultas pendentes - " + it.size
                         val layoutManager = LinearLayoutManager(context)
                         layoutManager.orientation = RecyclerView.VERTICAL
-                        val adapter = MinhasConsultasAdapter(view.context, activity, medico = true)
+                        val adapter = MinhasConsultasInicialMedicoAdapter(view.context, activity, medico = true)
                         recycler_minhas_pacientes.layoutManager = layoutManager
                         recycler_minhas_pacientes.adapter = adapter
                         adapter.setLista(it)

@@ -1,6 +1,7 @@
 package com.example.clinicalucreciapain.activity
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -11,8 +12,6 @@ import proitdevelopers.com.bloomberg.viewModel.*
 
 class MainActivity : AppCompatActivity() {
 
-    val senha = 12345
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -22,6 +21,9 @@ class MainActivity : AppCompatActivity() {
         cartaoGestanteViewModel = ViewModelProviders.of(this).get(CartaoGestanteViewModel::class.java)
         minhasConsultasViewModel = ViewModelProviders.of(this).get(MinhasConsultasViewModel::class.java)
         bebeViewModel = ViewModelProviders.of(this).get(BebeViewModel::class.java)
+
+        for (e in email)
+            Log.i("email__",e)
 
 
         recomendacaoViewModel.recomendacao.observe(this@MainActivity, Observer { recomendacoes ->
@@ -155,51 +157,174 @@ class MainActivity : AppCompatActivity() {
         val medica2 = "android.resource://com.example.clinicalucreciapain/drawable/medica_um"
         val medico3 = "android.resource://com.example.clinicalucreciapain/drawable/medico_dois"
 
-        medicoViewModel.inserir(MedicoEntity(0,"Joaquim Ferreira","0001", sexo.get(1),nacionalidade.get(0),"01-01-1987","joaq@mins.gov.ao","00001","930000000",senha.toString(),medico1))
-        medicoViewModel.inserir(MedicoEntity(0,"Maria Salmatierra","0002", sexo.get(0),nacionalidade.get(1),"01-01-1987","maria@mins.gov.ao","00002","930000001",senha.toString(),medica2))
-        medicoViewModel.inserir(MedicoEntity(0,"Miguel Morais","0003", sexo.get(1),nacionalidade.get(2),"01-01-1980","miguelm@mins.gov.ao","00003","930000002",senha.toString(),medico3))
+        medicoViewModel.inserir(MedicoEntity(0,medicos.get(0),n_ordem.get(0), sexo.get(1),nacionalidade.get(0),"01-01-1987","joaq@mins.gov.ao","00001","930000000",senha.toString(),medico1))
+        medicoViewModel.inserir(MedicoEntity(0,medicos.get(1),n_ordem.get(1), sexo.get(0),nacionalidade.get(1),"01-01-1987","maria@mins.gov.ao","00002","930000001",senha.toString(),medica2))
+        medicoViewModel.inserir(MedicoEntity(0,medicos.get(2),n_ordem.get(2), sexo.get(1),nacionalidade.get(2),"01-01-1980","miguelm@mins.gov.ao","00003","930000002",senha.toString(),medico3))
 
     }
 
     private fun salvarGestante(gestanteViewModel: GestanteViewModel) {
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(0),bi.get(0), pais,peso.get(0),altura.get(0),sexo.get(0),grupo_sanguineo.get(0),raca.get(0),provincia.get(0),bairros.get(0),rua.get(0),municipios.get(0),telefone.get(0),email.get(0),dataNascimento.get(0),senha,n_ordem.get(0),fotos_gestantes.get(0),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(1),bi.get(1), pais,peso.get(1),altura.get(1),sexo.get(0),grupo_sanguineo.get(1),raca.get(0),provincia.get(0),bairros.get(1),rua.get(1),municipios.get(1),telefone.get(1),email.get(1),dataNascimento.get(1),senha,n_ordem.get(0),fotos_gestantes.get(1),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(2),bi.get(2), pais,peso.get(2),altura.get(2),sexo.get(0),grupo_sanguineo.get(2),raca.get(0),provincia.get(0),bairros.get(2),rua.get(2),municipios.get(2),telefone.get(2),email.get(2),dataNascimento.get(2),senha,n_ordem.get(0),fotos_gestantes.get(2),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(3),bi.get(3), pais,peso.get(3),altura.get(3),sexo.get(0),grupo_sanguineo.get(3),raca.get(0),provincia.get(0),bairros.get(3),rua.get(3),municipios.get(3),telefone.get(3),email.get(3),dataNascimento.get(3),senha,n_ordem.get(0),fotos_gestantes.get(3),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(4),bi.get(4), pais,peso.get(4),altura.get(4),sexo.get(0),grupo_sanguineo.get(0),raca.get(0),provincia.get(0),bairros.get(4),rua.get(4),municipios.get(4),telefone.get(4),email.get(4),dataNascimento.get(0),senha,n_ordem.get(0),fotos_gestantes.get(4),medicos.get(0)))
 
-        val paciente1 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_um"
-        val paciente2 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_dois"
-        val paciente3 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_tres"
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(5),bi.get(5), pais,peso.get(0),altura.get(0),sexo.get(0),grupo_sanguineo.get(1),raca.get(0),provincia.get(0),bairros.get(0),rua.get(0),municipios.get(0),telefone.get(5),email.get(5),dataNascimento.get(1),senha,n_ordem.get(1),fotos_gestantes.get(5),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(6),bi.get(6), pais,peso.get(1),altura.get(1),sexo.get(0),grupo_sanguineo.get(2),raca.get(0),provincia.get(0),bairros.get(1),rua.get(1),municipios.get(1),telefone.get(6),email.get(6),dataNascimento.get(2),senha,n_ordem.get(1),fotos_gestantes.get(6),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(7),bi.get(7), pais,peso.get(2),altura.get(2),sexo.get(0),grupo_sanguineo.get(3),raca.get(0),provincia.get(0),bairros.get(2),rua.get(2),municipios.get(2),telefone.get(7),email.get(7),dataNascimento.get(3),senha,n_ordem.get(1),fotos_gestantes.get(7),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(8),bi.get(8), pais,peso.get(3),altura.get(3),sexo.get(0),grupo_sanguineo.get(0),raca.get(0),provincia.get(0),bairros.get(3),rua.get(3),municipios.get(3),telefone.get(8),email.get(8),dataNascimento.get(0),senha,n_ordem.get(1),fotos_gestantes.get(8),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(9),bi.get(9), pais,peso.get(4),altura.get(4),sexo.get(0),grupo_sanguineo.get(1),raca.get(0),provincia.get(0),bairros.get(4),rua.get(4),municipios.get(4),telefone.get(9),email.get(9),dataNascimento.get(1),senha,n_ordem.get(1),fotos_gestantes.get(9),medicos.get(0)))
 
-        gestanteViewModel.inserir(GestanteEntity(0,"Elizabeth Da Costa Pina","005819182LA955","Angolana", "66.7","1.70", sexo.get(0),"O+", raca.get(0),"Luanda", "Catambor","Catambor","Belas","920000000","elizabth@gmail.com", "11-11-1990",senha.toString(),"0001",paciente1,"Joaquim Ferreira"))
-        gestanteViewModel.inserir(GestanteEntity(0,"Maria Florentina","015812182LA945","Angolana", "77.7","1.60",sexo.get(0),"O-", raca.get(1),"Luanda", "Maianga","Maianga","Belas","920000001","mariaflorentina@gmail.com", "09-02-1985",senha.toString(),"0002",paciente2,"Maria Salmatierra"))
-        gestanteViewModel.inserir(GestanteEntity(0,"Josefina Armando","005819182LA955","Angolana", "66.7","1.70",sexo.get(0),"O+", raca.get(0),"Luanda", "Sunset","Sunset","Belas","920000002","josejinaarmando@gmail.com", "02-06-1987",senha.toString(),"0003",paciente3,"Miguel Morais"))
-        gestanteViewModel.inserir(GestanteEntity(0,"Daniela Armando","005819182LA922","Angolana", "66.7","1.70",sexo.get(0),"O+", raca.get(0),"Luanda", "Sunset","Sunset","Belas","920000003","josejinaarmando@gmail.com", "02-06-1987",senha.toString(),"0003",paciente3,"Miguel Morais"))
-
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(10),bi.get(10), pais,peso.get(0),altura.get(0),sexo.get(0),grupo_sanguineo.get(2),raca.get(0),provincia.get(0),bairros.get(0),rua.get(0),municipios.get(0),telefone.get(10),email.get(10),dataNascimento.get(2),senha,n_ordem.get(2),fotos_gestantes.get(10),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(11),bi.get(11), pais,peso.get(1),altura.get(1),sexo.get(0),grupo_sanguineo.get(3),raca.get(0),provincia.get(0),bairros.get(1),rua.get(1),municipios.get(1),telefone.get(11),email.get(11),dataNascimento.get(3),senha,n_ordem.get(2),fotos_gestantes.get(11),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(12),bi.get(12), pais,peso.get(2),altura.get(2),sexo.get(0),grupo_sanguineo.get(0),raca.get(0),provincia.get(0),bairros.get(2),rua.get(2),municipios.get(2),telefone.get(12),email.get(12),dataNascimento.get(0),senha,n_ordem.get(2),fotos_gestantes.get(12),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(13),bi.get(13), pais,peso.get(3),altura.get(3),sexo.get(0),grupo_sanguineo.get(1),raca.get(0),provincia.get(0),bairros.get(3),rua.get(3),municipios.get(3),telefone.get(13),email.get(13),dataNascimento.get(1),senha,n_ordem.get(2),fotos_gestantes.get(13),medicos.get(0)))
+        gestanteViewModel.inserir(GestanteEntity(0, nomes.get(14),bi.get(14), pais,peso.get(4),altura.get(4),sexo.get(0),grupo_sanguineo.get(2),raca.get(0),provincia.get(0),bairros.get(4),rua.get(4),municipios.get(4),telefone.get(14),email.get(14),dataNascimento.get(2),senha,n_ordem.get(2),fotos_gestantes.get(14),medicos.get(0)))
     }
 
     private fun salvarCartaoGestante(cartaoGestanteViewModel: CartaoGestanteViewModel) {
-        val paciente1 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_um"
-        val paciente2 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_dois"
-        val paciente3 = "android.resource://com.example.clinicalucreciapain/drawable/paciente_tres"
-        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Elizabeth Da Costa Pina","25", estado_civil.get(0),habilidade_literaria.get(0), "Augusto Pina","Ingombota", "Hotel Diamante", "999999991","1","1","0","1","0",paciente1))
-        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Maria Florentina","33", estado_civil.get(1),habilidade_literaria.get(1), "Miguel Francisco","Maianga", "Hotel Tivoli", "999999992","5","3","1","2","1",paciente2))
-        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria, "Josefina Armando","40", estado_civil.get(1),habilidade_literaria.get(1), "Augusto Pina","Sunset", "Hotel Rancho Del Tesouro", "999999993","3","2","0","2","0",paciente3))
+
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(0) , idade.get(0), estado_civil.get(0),habilidade_literaria.get(0), parceiros.get(0),residencia.get(0),ponto_ref.get(0), telefone_emergencia.get(0),"3","2","0","2","0",fotos_gestantes.get(0)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(1) , idade.get(1), estado_civil.get(1),habilidade_literaria.get(1), parceiros.get(1),residencia.get(1),ponto_ref.get(1), telefone_emergencia.get(1),"2","1","0","1","0",fotos_gestantes.get(1)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(2) , idade.get(2), estado_civil.get(0),habilidade_literaria.get(1), parceiros.get(2),residencia.get(2),ponto_ref.get(2), telefone_emergencia.get(2),"3","2","0","2","0",fotos_gestantes.get(2)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(3) , idade.get(3), estado_civil.get(1),habilidade_literaria.get(1), parceiros.get(3),residencia.get(3),ponto_ref.get(3), telefone_emergencia.get(3),"4","3","0","3","0",fotos_gestantes.get(3)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(4) , idade.get(0), estado_civil.get(0),habilidade_literaria.get(1), parceiros.get(4),residencia.get(4),ponto_ref.get(4), telefone_emergencia.get(4),"1","0","0","0","0",fotos_gestantes.get(4)))
+
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(5) , idade.get(1), estado_civil.get(1),habilidade_literaria.get(0), parceiros.get(5),residencia.get(0),ponto_ref.get(0), telefone_emergencia.get(0),"3","2","0","2","0",fotos_gestantes.get(5)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(6) , idade.get(2), estado_civil.get(0),habilidade_literaria.get(0), parceiros.get(6),residencia.get(1),ponto_ref.get(1), telefone_emergencia.get(1),"2","1","0","1","0",fotos_gestantes.get(6)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(7) , idade.get(3), estado_civil.get(1),habilidade_literaria.get(0), parceiros.get(7),residencia.get(2),ponto_ref.get(2), telefone_emergencia.get(2),"3","2","0","2","0",fotos_gestantes.get(7)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(8) , idade.get(0), estado_civil.get(0),habilidade_literaria.get(1), parceiros.get(8),residencia.get(3),ponto_ref.get(3), telefone_emergencia.get(3),"4","3","0","3","0",fotos_gestantes.get(8)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(9) , idade.get(1), estado_civil.get(1),habilidade_literaria.get(1), parceiros.get(9),residencia.get(4),ponto_ref.get(4), telefone_emergencia.get(4),"1","0","0","0","0",fotos_gestantes.get(9)))
+
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(10) , idade.get(2), estado_civil.get(0),habilidade_literaria.get(1), parceiros.get(10),residencia.get(0),ponto_ref.get(0), telefone_emergencia.get(0),"1","0","0","0","0",fotos_gestantes.get(10)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(11) , idade.get(3), estado_civil.get(1),habilidade_literaria.get(1), parceiros.get(11),residencia.get(1),ponto_ref.get(1), telefone_emergencia.get(1),"4","3","0","3","0",fotos_gestantes.get(11)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(12) , idade.get(0), estado_civil.get(0),habilidade_literaria.get(0), parceiros.get(12),residencia.get(2),ponto_ref.get(2), telefone_emergencia.get(2),"3","2","0","2","0",fotos_gestantes.get(12)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(13) , idade.get(1), estado_civil.get(1),habilidade_literaria.get(1), parceiros.get(13),residencia.get(3),ponto_ref.get(3), telefone_emergencia.get(3),"2","1","0","1","0",fotos_gestantes.get(13)))
+        cartaoGestanteViewModel.inserir(CartaoGestanteEntity(0,unidade_sanitaria,nomes.get(14) , idade.get(2), estado_civil.get(0),habilidade_literaria.get(0), parceiros.get(14),residencia.get(4),ponto_ref.get(4), telefone_emergencia.get(4),"3","2","0","2","0",fotos_gestantes.get(14)))
+    }
+
+    private fun consultasMed1(minhasConsultasViewModel: MinhasConsultasViewModel){
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(0),nomes.get(0),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(1),nomes.get(0),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(2),nomes.get(0),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(3),nomes.get(0),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(4),nomes.get(0),medicos.get(0)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(5),nomes.get(1),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(6),nomes.get(1),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(7),nomes.get(1),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(8),nomes.get(1),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(9),nomes.get(1),medicos.get(0)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(10),nomes.get(2),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(11),nomes.get(2),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(12),nomes.get(2),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(13),nomes.get(2),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(14),nomes.get(2),medicos.get(0)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(15),nomes.get(3),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(16),nomes.get(3),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(17),nomes.get(3),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(18),nomes.get(3),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(19),nomes.get(3),medicos.get(0)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(20),nomes.get(4),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(21),nomes.get(4),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(22),nomes.get(4),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(23),nomes.get(4),medicos.get(0)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(24),nomes.get(4),medicos.get(0)))
+    }
+
+    private fun consultasMed2(minhasConsultasViewModel: MinhasConsultasViewModel){
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(0),nomes.get(5),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(1),nomes.get(5),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(2),nomes.get(5),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(3),nomes.get(5),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(4),nomes.get(5),medicos.get(1)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(5),nomes.get(6),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(6),nomes.get(6),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(7),nomes.get(6),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(8),nomes.get(6),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(9),nomes.get(6),medicos.get(1)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(10),nomes.get(7),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(11),nomes.get(7),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(12),nomes.get(7),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(13),nomes.get(7),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(14),nomes.get(7),medicos.get(1)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(15),nomes.get(8),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(16),nomes.get(8),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(17),nomes.get(8),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(18),nomes.get(8),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(19),nomes.get(8),medicos.get(1)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(20),nomes.get(9),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(21),nomes.get(9),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(22),nomes.get(9),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(23),nomes.get(9),medicos.get(1)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(24),nomes.get(9),medicos.get(1)))
+    }
+
+    private fun consultasMed3(minhasConsultasViewModel: MinhasConsultasViewModel){
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(0),nomes.get(10),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(1),nomes.get(10),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(2),nomes.get(10),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(3),nomes.get(10),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(4),nomes.get(10),medicos.get(2)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(5),nomes.get(11),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(6),nomes.get(11),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(7),nomes.get(11),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(8),nomes.get(11),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(9),nomes.get(11),medicos.get(2)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(10),nomes.get(12),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(11),nomes.get(12),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(12),nomes.get(12),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(13),nomes.get(12),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(14),nomes.get(12),medicos.get(2)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(15),nomes.get(13),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(16),nomes.get(13),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(17),nomes.get(13),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(18),nomes.get(13),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(19),nomes.get(13),medicos.get(2)))
+
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(20),nomes.get(14),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(21),nomes.get(14),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(22),nomes.get(14),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(23),nomes.get(14),medicos.get(2)))
+        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),datasConsulta.get(24),nomes.get(14),medicos.get(2)))
     }
 
     private fun salvarMinhasCOnsultas(minhasConsultasViewModel: MinhasConsultasViewModel) {
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"14:30 , 12-01-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"12:39 , 12-02-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"14:00 , 22-02-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"08:00 , 07-03-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"09:30 , 15-03-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"10:00 , 20-03-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio_consulta, estados_consulta.get(1),"11:30 , 17-04-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
-        minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio, estados_consulta.get(0),"14:30 , 13-05-2020","Elizabeth Da Costa Pina","Joaquim Ferreira"))
+
+        consultasMed1(minhasConsultasViewModel)
+        consultasMed2(minhasConsultasViewModel)
+        consultasMed3(minhasConsultasViewModel)
 
     }
 
     private fun salvarMeuBebe(bebeViewModel: BebeViewModel) {
 
-        bebeViewModel.inserir(BebeEntity(0,100f,150f,"Elizabeth Da Costa Pina","Feminino","1 ","2"))
-        bebeViewModel.inserir(BebeEntity(0,140f,150f,"Maria Florentina","Masculino","1 ","2"))
-        bebeViewModel.inserir(BebeEntity(0,190f,150f,"Josefina Armando","Feminino","1 ","2"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(0), sexo.get(0),"5 ","20"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(1), sexo.get(0),"3 ","12"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(2), sexo.get(0),"5 ","11"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(3), sexo.get(0),"1 ","4"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(4), sexo.get(0),"5 ","5"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(5), sexo.get(0),"1 ","1"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(6), sexo.get(0),"5 ","3"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(7), sexo.get(0),"5 ","4"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(8), sexo.get(0),"6 ","5"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(9), sexo.get(0),"7 ","6"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(10), sexo.get(0),"8 ","7"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(11), sexo.get(0),"9 ","8"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(12), sexo.get(0),"10 ","9"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(13), sexo.get(0),"3 ","1"))
+        bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(14), sexo.get(0),"2 ","2"))
 
     }
 }

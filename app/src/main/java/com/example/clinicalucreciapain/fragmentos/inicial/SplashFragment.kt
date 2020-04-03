@@ -30,16 +30,17 @@ class SplashFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
 
-            InternetCheck(object : InternetCheck.Consumer {
-                override fun accept(internet: Boolean?) {
-                    if (internet != true){
-                        view.context.mostrarMensagem(msgSemInternet)
-                        dialog_inf_red?.show()
-                    } else{
-                        lancarJanelaHome()
-                    }
+        InternetCheck(object : InternetCheck.Consumer {
+            override fun accept(internet: Boolean?) {
+                if (internet != true){
+                    //dialog_inf_red?.show()
+                    lancarJanelaHome()
                 }
-            })
+                else{
+                    lancarJanelaHome()
+                }
+            }
+        })
 
         return view
     }
@@ -83,7 +84,6 @@ class SplashFragment : Fragment() {
             InternetCheck(object : InternetCheck.Consumer {
                 override fun accept(internet: Boolean?) {
                     if (internet != true){
-                        view.context.mostrarMensagem(msgSemInternet)
                         dialog_inf_red?.show()
                     }
                     else{

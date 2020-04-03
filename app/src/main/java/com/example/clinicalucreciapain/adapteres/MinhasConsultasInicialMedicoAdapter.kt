@@ -22,12 +22,12 @@ import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.item_minhas_consultas.view.*
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
-class MinhasConsultasAdapter(
+class MinhasConsultasInicialMedicoAdapter(
     private val context: Context,
     private val activity: FragmentActivity?,
     private val medico: Boolean = false,
     private val finalizar_consulta: Boolean = false,
-    private val minhasConsultasViewModel: MinhasConsultasViewModel? = null) : RecyclerView.Adapter<MinhasConsultasAdapter.MyViewHolder>() {
+    private val minhasConsultasViewModel: MinhasConsultasViewModel? = null) : RecyclerView.Adapter<MinhasConsultasInicialMedicoAdapter.MyViewHolder>() {
 
     private var res_room: List<MinhasConsultasEntity> = mutableListOf()
 
@@ -83,76 +83,19 @@ class MinhasConsultasAdapter(
                     txt_doctor.text = res_room[posicao].paciente
                     txt_data.text = res_room[posicao].data
                     tv_lb_med_pac.text = "Paciente. "
-
                     setOnClickListener {
-                        dialog_finalizar_consulta?.show()
-                        cBEcografia?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
-                            override fun onCheckedChanged(p0: CompoundButton?, mostar: Boolean) {
-                                if (mostar){
-                                    groupEcografia?.visibility = View.VISIBLE
-                                    ecografia = true
-                                    eliminarErri()
-                                } else{
-                                    groupEcografia?.visibility = View.GONE
-                                    ecografia = false
-                                }
-                            }
-                        })
+                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(
+                            HostFragmentActividadesDirections
+                                .actionHostFragmentMedicoToAgendarConsultaFragment(
+                                    res_room[posicao].medico,res_room[posicao].paciente,
+                                    resources.getString(R.string.remarcar_consulta),true,
+                                    res_room[posicao].relatorio,res_room[posicao].estado,
+                                    res_room[posicao].data.split(",").get(1),
+                                    res_room[posicao].data.split(",").get(0),res_room[posicao].id))
                     }
-                }
-            }else{
-                itemView.apply {
-                    txt_doctor.text = res_room[posicao].medico
-                    txt_data.text = res_room[posicao].data
-                }
-                itemView.setOnClickListener {
-                    dialog_resum_txt?.text = res_room[posicao].relatorio
-                    dialog_resumo?.show()
                 }
             }
 
-            if (finalizar_consulta){
-
-                finalizar_consulta_btn?.setOnClickListener {
-
-                    edt_data_consulta2?.let {
-                        context.limparErroEditTxt(it)
-                    }
-
-                    if (ecografia){
-                        Log.i("validar_eco","ecografiaaaa")
-                         if (validarCampos()){
-                             validarFinalizar(posicao)
-                         }
-                    }else{
-                        validarFinalizar(posicao)
-                    }
-
-
-                }
-            }
-        }
-
-        fun validarFinalizar(posicao: Int) {
-            if (TextUtils.isEmpty(edt_data_consulta2?.text)) {
-                edt_data_consulta2?.let { it1 -> context.erroEditText(it1, MSG_ERRO_VAZIO_CAMPO) }
-            }else{
-                if (ecografia){
-                    Thread {
-                        bebeViewModel.updateCrescimentoBebe(peso,altura,dias,semanas,res_room.get(posicao).paciente)
-                    }.start()
-                }
-                minhasConsultasViewModel?.update(MinhasConsultasEntity(res_room.get(posicao).id,edt_data_consulta2?.text.toString(),
-                    estados_consulta.get(1),res_room.get(posicao).data,res_room.get(posicao).paciente,res_room.get(posicao).medico))
-                edt_data_consulta2?.text?.clear()
-                dialog_finalizar_consulta?.dismiss()
-                activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(FinalizarConsultaFragmentDirections.actionFinalizarConsultaFragmentSelf())
-                activity?.let { it1 -> esconderTeclado(it1) }
-                notifyDataSetChanged()
-                activity?.getFragmentManager()?.popBackStack()
-                context.mostrarMensagem("Consulta finalizada com sucesso!!")
-
-            }
         }
     }
 
