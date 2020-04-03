@@ -84,7 +84,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="2.010"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="56dp"
@@ -111,7 +110,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:text="2.010"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="56dp"
@@ -129,7 +127,7 @@
         android:layout_marginRight="8dp"
         android:hint="Semanas"
         android:theme="@style/EditTextEstilo"
-        app:layout_constraintEnd_toStartOf="@+id/textInputUsuarioSenha"
+        app:layout_constraintEnd_toStartOf="@+id/textInputDias"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputAltura">
@@ -139,7 +137,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:text="2"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="56dp"
@@ -147,7 +144,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputUsuarioSenha"
+        android:id="@+id/textInputDias"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -167,7 +164,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="numberDecimal"
-            android:text="7"
             android:textColor="@android:color/black"
             android:textSize="14sp"
             tools:layout_editor_absoluteX="56dp"
@@ -195,7 +191,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:constraint_referenced_ids="textInputUsuarioSenha,textInputSemanas,textInputPeso,textInputAltura,textView6" />
+        app:constraint_referenced_ids="textInputDias,textInputSemanas,textInputPeso,textInputAltura,textView6" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

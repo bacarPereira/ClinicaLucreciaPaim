@@ -21,6 +21,10 @@ class BebeViewModel(application:Application):AndroidViewModel(application) {
         InsertAsyncTask(dao).execute(entity)
     }
 
+    fun updateCrescimentoBebe(peso:String,altura:String,dias:String,semanas:String,gestante:String){
+        dao.update_crescimentoBebe(peso,altura,dias,semanas,gestante)
+    }
+
     fun getMyBaby(gestante_bi:String):LiveData<BebeEntity>{
         return dao.gestante_bebe(gestante_bi)
     }

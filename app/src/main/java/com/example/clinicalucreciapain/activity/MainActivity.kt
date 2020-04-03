@@ -197,9 +197,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun salvarMeuBebe(bebeViewModel: BebeViewModel) {
 
-        bebeViewModel.inserir(BebeEntity(0,100f,150f,"005819182LA955","Feminino","1 semana e 2 dias"))
-        bebeViewModel.inserir(BebeEntity(0,140f,150f,"015812182LA945","Masculino","10 semanas e 6 dias"))
-        bebeViewModel.inserir(BebeEntity(0,190f,150f,"005819182LA955","Feminino","3 semana e 5 dias"))
+        bebeViewModel.inserir(BebeEntity(0,100f,150f,"Elizabeth Da Costa Pina","Feminino","1 ","2"))
+        bebeViewModel.inserir(BebeEntity(0,140f,150f,"Maria Florentina","Masculino","1 ","2"))
+        bebeViewModel.inserir(BebeEntity(0,190f,150f,"Josefina Armando","Feminino","1 ","2"))
 
     }
 }

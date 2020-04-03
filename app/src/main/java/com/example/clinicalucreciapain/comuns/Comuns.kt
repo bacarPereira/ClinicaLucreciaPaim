@@ -26,6 +26,7 @@ val raca = arrayOf("Negra","Branca")
 val estados_consulta = arrayOf("Pendente","Completa")
 const val regex_hora = "(\\d)(\\d):(\\d)(\\d)"
 val relatorio = "N/A"
+val semValorString = ""
 val TEMPO_RUN = 3000
 val semInt = -1
 val nulo = null

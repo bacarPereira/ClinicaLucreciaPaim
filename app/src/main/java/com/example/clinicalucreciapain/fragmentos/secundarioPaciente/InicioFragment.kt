@@ -42,11 +42,13 @@ class InicioFragment : Fragment() {
                 minhasConsultasViewModel.minhasConsultas(it.get(0).nome, estados_consulta.get(1)).observe(this,
                     Observer { tv_total_consultas_.text = "Total de consultas feitas - ${it.size}" })
 
-                bebeViewModel.getMyBaby(it.get(0).bi).observe(this, Observer {
-                    bebe_sexo.text = it.sexo
-                    bebe_altura.text = it.altura.toString().plus(" mm")
-                    bebe_peso.text = it.peso.toString().plus(" g")
-                    txt_tempo_gest.text = it.tempoGestancional
+                bebeViewModel.getMyBaby(it.get(0).nome).observe(this, Observer {
+                    it?.let {
+                        bebe_sexo.text = it.sexo
+                        bebe_altura.text = it.altura.toString().plus(" mm")
+                        bebe_peso.text = it.peso.toString().plus(" g")
+                        txt_tempo_gest.text = it.semanas.plus(" semanas e ".plus(it.dias).plus(" dias"))
+                    }
                 })
             }
         })

@@ -15,7 +15,10 @@ interface BebeDao {
     @Update
     fun update(bebeEntity: BebeEntity)
 
-    @Query("SELECT * FROM bebeEntity where gestante_bi == :gestante_bi")
+    @Query("UPDATE bebeEntity SET peso = :peso,altura =:altura,dias =:dias ,semanas =:semanas where gestante == :gestante")
+    fun update_crescimentoBebe(peso:String,altura:String,dias:String,semanas:String,gestante: String)
+
+    @Query("SELECT * FROM bebeEntity where gestante == :gestante_bi")
     fun gestante_bebe(gestante_bi:String):LiveData<BebeEntity>
 
     @Query("DELETE FROM bebeEntity ")

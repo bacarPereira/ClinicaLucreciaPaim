@@ -11,11 +11,13 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.clinicalucreciapain.comuns.bebeViewModel
 import com.example.clinicalucreciapain.comuns.estados_consulta
 import com.example.clinicalucreciapain.comuns.medicoUserViewModel
 import com.example.clinicalucreciapain.comuns.minhasConsultasViewModel
 import kotlinx.android.synthetic.main.fragment_finalizar_consulta.*
 import proitappsolutions.com.rumosstore.adapter.MinhasConsultasAdapter
+import proitdevelopers.com.bloomberg.viewModel.BebeViewModel
 import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
@@ -27,6 +29,7 @@ class FinalizarConsultaFragment : Fragment() {
 
         medicoUserViewModel = ViewModelProviders.of(this).get(MedicoUserViewModel::class.java)
         minhasConsultasViewModel = ViewModelProviders.of(this).get(MinhasConsultasViewModel::class.java)
+        bebeViewModel = ViewModelProviders.of(this).get(BebeViewModel::class.java)
 
         return inflater.inflate(R.layout.fragment_finalizar_consulta, container, false)
     }

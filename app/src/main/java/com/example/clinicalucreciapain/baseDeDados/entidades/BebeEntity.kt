@@ -9,8 +9,9 @@ class BebeEntity (
     var id:Int,
     var altura:Float,
     var peso:Float,
-    var gestante_bi:String,
+    var gestante:String,
     var sexo:String,
-    var tempoGestancional:String
+    var semanas:String,
+    var dias:String
 
 )

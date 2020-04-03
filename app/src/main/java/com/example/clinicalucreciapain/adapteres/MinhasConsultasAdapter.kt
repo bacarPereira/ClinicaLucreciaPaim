@@ -3,6 +3,7 @@ package proitappsolutions.com.rumosstore.adapter
 import android.app.Dialog
 import android.content.Context
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.example.clinicalucreciapain.baseDeDados.entidades.MinhasConsultasEnti
 import com.example.clinicalucreciapain.comuns.*
 import com.example.clinicalucreciapain.fragmentos.hosts.HostFragmentActividadesDirections
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.android.synthetic.main.item_minhas_consultas.view.*
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
@@ -40,6 +42,17 @@ class MinhasConsultasAdapter(
     var editSemanas: TextInputEditText? = null
     var editDias: TextInputEditText? = null
     var groupEcografia: Group? = null
+
+    var textInputAltura: TextInputLayout? = null
+    var textInputPeso: TextInputLayout? = null
+    var textInputSemanas: TextInputLayout? = null
+    var textInputDias: TextInputLayout? = null
+    var ecografia = false
+
+    var altura = semValorString
+    var peso = semValorString
+    var semanas = semValorString
+    var dias = semValorString
 
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): MyViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.item_minhas_consultas, p0, false)
@@ -80,6 +93,22 @@ class MinhasConsultasAdapter(
                                     res_room[posicao].data.split(",").get(1),
                                     res_room[posicao].data.split(",").get(0),res_room[posicao].id))
                     }
+
+                    setOnClickListener {
+                        dialog_finalizar_consulta?.show()
+                        cBEcografia?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
+                            override fun onCheckedChanged(p0: CompoundButton?, mostar: Boolean) {
+                                if (mostar){
+                                    groupEcografia?.visibility = View.VISIBLE
+                                    ecografia = true
+                                    eliminarErri()
+                                } else{
+                                    groupEcografia?.visibility = View.GONE
+                                    ecografia = false
+                                }
+                            }
+                        })
+                    }
                 }
             }else{
                 itemView.apply {
@@ -93,17 +122,6 @@ class MinhasConsultasAdapter(
             }
 
             if (finalizar_consulta){
-                itemView.setOnClickListener {
-                    dialog_finalizar_consulta?.show()
-                        cBEcografia?.setOnCheckedChangeListener(object : CompoundButton.OnCheckedChangeListener {
-             override fun onCheckedChanged(p0: CompoundButton?, mostar: Boolean) {
-                 if (mostar)
-                     groupEcografia?.visibility = View.VISIBLE
-                 else
-                     groupEcografia?.visibility = View.GONE
-             }
-                })
-                }
 
                 finalizar_consulta_btn?.setOnClickListener {
 
@@ -111,25 +129,37 @@ class MinhasConsultasAdapter(
                         context.limparErroEditTxt(it)
                     }
 
-                    if (TextUtils.isEmpty(edt_data_consulta2?.text)) {
-                        edt_data_consulta2?.let { it1 ->
-                            context.erroEditText(
-                                it1,
-                                MSG_ERRO_VAZIO_CAMPO)
-                        }
+                    if (ecografia){
+                        Log.i("validar_eco","ecografiaaaa")
+                         if (validarCampos()){
+                             validarFinalizar(posicao)
+                         }
                     }else{
-                        minhasConsultasViewModel?.update(MinhasConsultasEntity(res_room.get(posicao).id,edt_data_consulta2?.text.toString(),
-                            estados_consulta.get(1),res_room.get(posicao).data,res_room.get(posicao).paciente,res_room.get(posicao).medico))
-                        edt_data_consulta2?.text?.clear()
-                        dialog_finalizar_consulta?.dismiss()
-                        activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(FinalizarConsultaFragmentDirections.actionFinalizarConsultaFragmentSelf())
-                        activity?.let { it1 -> esconderTeclado(it1) }
-                        notifyDataSetChanged()
-                        activity?.getFragmentManager()?.popBackStack()
-                        context.mostrarMensagem("Consulta finalizada com sucesso!!")
-
+                        validarFinalizar(posicao)
                     }
+
+
                 }
+            }
+        }
+
+        fun validarFinalizar(posicao: Int) {
+            if (TextUtils.isEmpty(edt_data_consulta2?.text)) {
+                edt_data_consulta2?.let { it1 -> context.erroEditText(it1, MSG_ERRO_VAZIO_CAMPO) }
+            }else{
+                Thread {
+                    bebeViewModel.updateCrescimentoBebe(peso,altura,dias,semanas,res_room.get(posicao).paciente)
+                }.start()
+                minhasConsultasViewModel?.update(MinhasConsultasEntity(res_room.get(posicao).id,edt_data_consulta2?.text.toString(),
+                    estados_consulta.get(1),res_room.get(posicao).data,res_room.get(posicao).paciente,res_room.get(posicao).medico))
+                edt_data_consulta2?.text?.clear()
+                dialog_finalizar_consulta?.dismiss()
+                activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(FinalizarConsultaFragmentDirections.actionFinalizarConsultaFragmentSelf())
+                activity?.let { it1 -> esconderTeclado(it1) }
+                notifyDataSetChanged()
+                activity?.getFragmentManager()?.popBackStack()
+                context.mostrarMensagem("Consulta finalizada com sucesso!!")
+
             }
         }
     }
@@ -154,7 +184,49 @@ class MinhasConsultasAdapter(
         editDias = dialog_finalizar_consulta?.findViewById(R.id.editDias)
         groupEcografia = dialog_finalizar_consulta?.findViewById(R.id.groupEcografia)
 
+        textInputAltura = dialog_finalizar_consulta?.findViewById(R.id.textInputAltura)
+        textInputPeso = dialog_finalizar_consulta?.findViewById(R.id.textInputPeso)
+        textInputSemanas = dialog_finalizar_consulta?.findViewById(R.id.textInputSemanas)
+        textInputDias = dialog_finalizar_consulta?.findViewById(R.id.textInputDias)
+    }
 
+    private fun validarCampos(): Boolean {
+
+        eliminarErri()
+
+        altura = editAltura?.text.toString()
+        peso = editPeso?.text.toString()
+        semanas = editSemanas?.text.toString()
+        dias = editDias?.text.toString()
+
+        if (TextUtils.isEmpty(altura)) {
+            editAltura?.let { context.erroEditText(it, MSG_ERRO_VAZIO_CAMPO) }
+            return false
+        }
+
+        if (TextUtils.isEmpty(peso)) {
+            editPeso?.let { context.erroEditText(it, MSG_ERRO_VAZIO_CAMPO) }
+            return false
+        }
+
+        if (TextUtils.isEmpty(semanas)) {
+            editSemanas?.let { context.erroEditText(it, MSG_ERRO_VAZIO_CAMPO) }
+            return false
+        }
+
+        if (TextUtils.isEmpty(dias)) {
+            editDias?.let { context.erroEditText(it, MSG_ERRO_VAZIO_CAMPO) }
+            return false
+        }
+
+        return true
+    }
+
+    private fun eliminarErri(){
+        editAltura?.let { context.limparErroEditTxt(it) }
+        editPeso?.let { context.limparErroEditTxt(it) }
+        editSemanas?.let { context.limparErroEditTxt(it) }
+        editDias?.let { context.limparErroEditTxt(it) }
     }
 
 }
