@@ -9,7 +9,7 @@ import com.example.clinicalucreciapain.baseDeDados.entidades.*
 
 @Database(entities = [RecomendacaoEntity::class,
     GestanteEntity::class,GestanteUserEntity::class,CartaoGestanteEntity::class
-    ,MedicoEntity::class,MedicoUserEntity::class,MinhasConsultasEntity::class,BebeEntity::class], version = 1, exportSchema = false)
+    ,MedicoEntity::class,MedicoUserEntity::class,MinhasConsultasEntity::class,BebeEntity::class], version = 2, exportSchema = false)
 abstract class DbMaternidade:RoomDatabase() {
 
     abstract fun recomendacaoDao(): RecomendacaoDao
@@ -32,6 +32,7 @@ abstract class DbMaternidade:RoomDatabase() {
                         dbMaternidadeInstancia = Room.databaseBuilder(
                             context.applicationContext,
                             DbMaternidade::class.java,"db_maternidade")
+                            .fallbackToDestructiveMigration()
                             .build()
                     }
                 }

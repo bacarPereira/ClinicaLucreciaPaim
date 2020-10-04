@@ -37,9 +37,9 @@ class FinalizarConsultaFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        medicoUserViewModel.medicos.observe(this, Observer {
+        medicoUserViewModel.medico.observe(this, Observer {
 
-            minhasConsultasViewModel.minhasConsultasMedico(it.get(0).nome, estados_consulta.get(0)).observe(this,
+            minhasConsultasViewModel.minhasConsultasMedico(it.nome, estados_consulta.get(0)).observe(this,
                 Observer {
 
                     if (it.size>0){

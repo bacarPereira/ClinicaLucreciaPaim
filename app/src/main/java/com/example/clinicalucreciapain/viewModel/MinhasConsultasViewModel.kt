@@ -25,6 +25,10 @@ class MinhasConsultasViewModel(application:Application):AndroidViewModel(applica
         UpdateAsyncTask(dao).execute(entity)
     }
 
+    fun isConsultaInThisData(data:String,medico:String):LiveData<MinhasConsultasEntity>{
+        return dao.isConsultaInThisData(data,medico)
+    }
+
     fun minhasConsultas(paciente:String,estado:String):LiveData<List<MinhasConsultasEntity>>{
         return dao.minhasConsultas(paciente,estado)
     }

@@ -12,6 +12,17 @@
         android:icon="@drawable/ic_timeline_black_24dp" />
 
     <item
+        android:id="@+id/minhasPacientesFragment"
+        android:title="@string/menu_pacientes"
+        android:icon="@drawable/ic_pregnant_woman_black_24dp" />
+
+    <item
+        android:id="@+id/relatorioConsultaFragment"
+        android:title="@string/menu_historico_consultas"
+        android:icon="@drawable/ic_baseline_history_24" />
+
+
+    <item
         android:id="@+id/definicoesFragment2"
         android:title="@string/menu_definicoes"
         android:icon="@drawable/ic_settings_black_24dp"

@@ -21,6 +21,9 @@ interface MinhasConsultasDao {
     @Query("SELECT * FROM minhasConsultasEntity WHERE medico == :medico_nomw AND estado == :estado")
     fun minhasConsultasMedico(medico_nomw:String,estado:String):LiveData<List<MinhasConsultasEntity>>
 
+    @Query("SELECT * FROM minhasConsultasEntity WHERE data == :data AND medico == :medico")
+    fun isConsultaInThisData(data:String,medico:String):LiveData<MinhasConsultasEntity>
+
     @Query("DELETE FROM minhasConsultasEntity ")
     fun deleteAll()
 }

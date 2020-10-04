@@ -14,7 +14,7 @@ lateinit var bebeViewModel: BebeViewModel
 const val MSG_ERRO_VAZIO_CAMPO = "Preencha o campo"
 const val msg_acarregar = "A carregar ..."
 const val ola_gest = "Olá, "
-const val unidade_sanitaria = "Lucrêcia Pain"
+const val unidade_sanitaria = "Lucrecia Paim"
 const val msgSemInternet = "A rede 3G ou WI-FI não possui tranferência de dados."
 const val relatorio_consulta = "O bebé está saudavel sem nenhuma complicação.\n\n " +
         "Na próxima consulta será examinado outros aspectos que garantem o bom estado do bebé.\n\n"
@@ -71,7 +71,7 @@ val rua = arrayListOf("Sunset","Estalagem","Antigo Control","Marginal","Sambizan
 
 val habilidade_literaria = arrayOf("Médio","Licenciada","Mestre")
 val senha = "12345"
-val grupo_sanguineo = arrayOf("A","B","AB","O")
+val grupo_sanguineo = arrayOf("A+","B-","AB-","O+")
 
 val bi = arrayOf("005710104LA001","005710104LA002","005710104LA003","005710104LA004","005710104LA005",
     "005710104LA006","005710104LA007","005710104LA008","005710104LA009","005710104LA010",

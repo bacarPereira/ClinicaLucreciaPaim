@@ -114,7 +114,7 @@ xmlns:card_view="http://schemas.android.com/apk/res-auto">
                 <TextView
                     android:id="@+id/textView16"
                     style="@style/txt_gestant_estilo"
-                    android:layout_width="0dp"
+                    android:layout_width="80dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:text="Sexo"

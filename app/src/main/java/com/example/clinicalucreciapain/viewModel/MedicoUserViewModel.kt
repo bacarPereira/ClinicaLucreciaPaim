@@ -11,12 +11,12 @@ import com.example.clinicalucreciapain.baseDeDados.entidades.MedicoUserEntity
 class MedicoUserViewModel(application:Application):AndroidViewModel(application) {
 
     private val dao: MedicoUserDao
-    internal val medicos:LiveData<List<MedicoUserEntity>>
+    internal val medico:LiveData<MedicoUserEntity>
 
     init {
         val dbBega = DbMaternidade.getDataBase(application)
         dao = dbBega!!.medicoUserEntity()
-        medicos = dao.medicos
+        medico = dao.medico
     }
 
     fun inserir(entity: MedicoUserEntity){

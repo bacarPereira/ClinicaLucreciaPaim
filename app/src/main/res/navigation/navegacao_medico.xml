@@ -19,4 +19,36 @@
         android:name="com.example.clinicalucreciapain.DefinicoesFragment"
         android:label="fragment_definicoes"
         tools:layout="@layout/fragment_definicoes" />
+    <fragment
+        android:id="@+id/minhasPacientesFragment"
+        android:name="com.example.clinicalucreciapain.MinhasPacientesFragment"
+        android:label="fragment_minhas_pacientes"
+        tools:layout="@layout/fragment_minhas_pacientes" >
+        <action
+            android:id="@+id/action_minhasPacientesFragment_to_cartaoGestantePacienteFragment"
+            app:destination="@id/cartaoGestantePacienteFragment" />
+        <action
+            android:id="@+id/action_minhasPacientesFragment_to_historicoGestanteConsultaFragment"
+            app:destination="@id/historicoGestanteConsultaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/relatorioConsultaFragment"
+        android:name="com.example.clinicalucreciapain.RelatorioConsultaFragment"
+        android:label="fragment_relatorio_consulta"
+        tools:layout="@layout/fragment_relatorio_consulta" />
+    <fragment
+        android:id="@+id/cartaoGestantePacienteFragment"
+        android:name="com.example.clinicalucreciapain.CartaoGestantePacienteFragment"
+        android:label="fragment_cartao_gestante_paciente"
+        tools:layout="@layout/fragment_cartao_gestante_paciente" >
+        <argument android:name="nomeGestante"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/historicoGestanteConsultaFragment"
+        android:name="com.example.clinicalucreciapain.HistoricoGestanteConsultaFragment"
+        android:label="fragment_historico_gestante_consulta"
+        tools:layout="@layout/fragment_historico_gestante_consulta" >
+        <argument android:name="gestante" />
+    </fragment>
 </navigation>

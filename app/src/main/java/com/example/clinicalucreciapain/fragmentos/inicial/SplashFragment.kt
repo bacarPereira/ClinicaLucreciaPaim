@@ -62,8 +62,8 @@ class SplashFragment : Fragment() {
                         gest = true
                         findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToInicialSessaoPacienteFragment2())
                     } else{
-                        medicoUserViewModel.medicos.observe(this@SplashFragment, Observer {
-                            if (it.size>0){
+                        medicoUserViewModel.medico.observe(this@SplashFragment, Observer {
+                            if (it != null){
                                 medi = true
                                 findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToHostFragmentActividades())
                             }else{

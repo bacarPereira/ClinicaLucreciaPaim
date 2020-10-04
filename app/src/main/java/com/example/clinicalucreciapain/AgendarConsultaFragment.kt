@@ -18,6 +18,7 @@ import com.example.clinicalucreciapain.baseDeDados.entidades.MinhasConsultasEnti
 import com.example.clinicalucreciapain.comuns.*
 import kotlinx.android.synthetic.main.fragment_agendar_consulta.*
 import kotlinx.android.synthetic.main.fragment_agendar_consulta.view.*
+import kotlinx.android.synthetic.main.fragment_inicio.*
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 import java.util.*
 
@@ -85,8 +86,8 @@ class AgendarConsultaFragment : Fragment() {
                 val dia = it.get(Calendar.DAY_OF_WEEK)
                 val mDatePickerDialog = DatePickerDialog(view.context, R.style.DialogTheme,
                     DatePickerDialog.OnDateSetListener { datePicker, selecionaAno, selecionaMes, selecionaDia ->
-                        if (selecionaAno != ano) {
-                            context?.mostrarMensagem("Ano selecionado não permitido")
+                        if (selecionaAno != ano || selecionaMes < mes) {
+                            context?.mostrarMensagem("Data Inválida")
                             edt_data_consulta.error = "Data inválida"
                         } else {
                             edt_data_consulta.setText("${selecionaDia.toString()}-${selecionaMes + 1}-$selecionaAno")
@@ -104,7 +105,7 @@ class AgendarConsultaFragment : Fragment() {
         progressDialog = ProgressDialog(context,
             R.style.MyStyleProgress
         )
-        progressDialog!!.setCancelable(false)
+        progressDialog?.setCancelable(false)
     }
 
     private fun agendarConsulta(
@@ -116,16 +117,60 @@ class AgendarConsultaFragment : Fragment() {
         activity?.let { esconderTeclado(it) }
         progressDialog?.setMessage(msg_acarregar)
         progressDialog?.show()
+        Log.i("TAG", "agendarConsulta: $medico")
+        Log.i("TAG", "agendarConsulta: $paciente")
+        minhasConsultasViewModel.isConsultaInThisData(data.plus(", $hora"),medico).observe(viewLifecycleOwner,
+            androidx.lifecycle.Observer {
+                if (it != null){
+                    if (remarcar_agenda && it.id == idConsulta){
+                        salvarConsulta(data, hora, paciente, medico)
+                    }else{
+                        progressDialog?.dismiss()
+                        view?.edt_data_consulta?.let { it1 -> view?.context?.erroEditText(it1, "Verifica a data e hora. Já existe uma consulta marcada.") }
+                        view?.edt_hora?.let { it1 -> view?.context?.erroEditText(it1, "Verifica a data e hora. Já existe uma consulta marcada.") }
+                    }
+                }else{
+                    salvarConsulta(data, hora, paciente, medico)
+                }
+            })
 
+
+    }
+
+    private fun salvarConsulta(
+        data: String,
+        hora: String,
+        paciente: String,
+        medico: String
+    ) {
         Handler().postDelayed({
             progressDialog?.dismiss()
-            if (remarcar_agenda){
-                minhasConsultasViewModel.update(MinhasConsultasEntity(idConsulta, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
+            if (remarcar_agenda) {
+                minhasConsultasViewModel.update(
+                    MinhasConsultasEntity(
+                        idConsulta,
+                        relatorio,
+                        estados_consulta.get(0),
+                        data.plus(", $hora"),
+                        paciente,
+                        medico
+                    )
+                )
                 getFragmentManager()?.popBackStack()
-                context?.mostrarMensagem("Consulta atualizada com sucesso !!")
-            }else{
-                minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
-                activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(AgendarConsultaFragmentDirections.actionAgendarConsultaFragmentToHostFragmentMedico())
+                context?.mostrarMensagem("Consulta foi remarcada com sucesso !!")
+            } else {
+                minhasConsultasViewModel.inserir(
+                    MinhasConsultasEntity(
+                        0,
+                        relatorio,
+                        estados_consulta.get(0),
+                        data.plus(", $hora"),
+                        paciente,
+                        medico
+                    )
+                )
+                activity?.findNavController(R.id.fragmentConteinerSplash)
+                    ?.navigate(AgendarConsultaFragmentDirections.actionAgendarConsultaFragmentToHostFragmentMedico())
                 context?.mostrarMensagem("Consulta marcada com sucesso !!")
             }
         }, TEMPO_RUN.toLong())
@@ -197,11 +242,6 @@ class AgendarConsultaFragment : Fragment() {
             context?.mostrarMensagem("Ano selecionado não permitido")
             return false
         }
-
-        Log.i("log_user","0"+data_consulta.get(0))
-        Log.i("log_user","1"+data_consulta.get(1))
-        Log.i("log_user","mes"+mes)
-        Log.i("log_user","2"+data_consulta.get(2))
 
         return true
     }

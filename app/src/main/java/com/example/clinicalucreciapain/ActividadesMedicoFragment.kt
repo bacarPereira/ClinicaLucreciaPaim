@@ -18,8 +18,7 @@ import proitappsolutions.com.rumosstore.adapter.MinhasPacientesAdapter
 import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MinhasConsultasViewModel
 
-class
-ActividadesMedicoFragment : Fragment() {
+class ActividadesMedicoFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         minhasConsultasViewModel = ViewModelProviders.of(this).get(MinhasConsultasViewModel::class.java)
@@ -30,9 +29,9 @@ ActividadesMedicoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        medicoUserViewModel.medicos.observe(this, Observer {
+        medicoUserViewModel.medico.observe(this, Observer {
 
-            gestanteViewModel.gestante_medicos(it.get(0).n_ordem).observe(this, Observer {
+            gestanteViewModel.gestante_medicos(it.n_ordem).observe(this, Observer {
                 if (it.size>0){
                     val layoutManager = LinearLayoutManager(context)
                     layoutManager.orientation = RecyclerView.VERTICAL

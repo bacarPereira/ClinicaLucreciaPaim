@@ -16,9 +16,6 @@ import com.example.clinicalucreciapain.databinding.FragmentMeuMedicoBinding
 import proitdevelopers.com.bloomberg.viewModel.GestanteUserViewModel
 import proitdevelopers.com.bloomberg.viewModel.MedicoViewModel
 
-/**
- * A simple [Fragment] subclass.
- */
 class MeuMedicoFragment : Fragment() {
 
     override fun onCreateView(

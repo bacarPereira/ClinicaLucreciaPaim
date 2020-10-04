@@ -19,10 +19,13 @@ interface MedicoUserDao {
     fun login(usuario:String,senha:String):LiveData<MedicoUserEntity>
 
     @get:Query("SELECT * FROM medicoUserEntity")
-    val medicos:LiveData<List<MedicoUserEntity>>
+    val medico:LiveData<MedicoUserEntity>
 
     @Query("SELECT * FROM medicoUserEntity WHERE n_ordem == :n_ordem ")
     fun meuMedico(n_ordem:String):LiveData<MedicoUserEntity>
+
+    @Query("SELECT * FROM medicoUserEntity WHERE n_ordem == :n_ordem ")
+    fun myAccountMedico(n_ordem:String):LiveData<MedicoUserEntity>
 
     @Query("DELETE FROM medicoUserEntity ")
     fun deleteAll()
