@@ -27,7 +27,7 @@ class AgendarConsultaFragment : Fragment() {
     var paciente :String? = null
     var data :String = ""
     var hora :String = ""
-    var mCurrentDate: Calendar? = null
+    var mCurrentDate: Calendar = Calendar.getInstance()
     var mDateSetListener: DatePickerDialog.OnDateSetListener? = null
     var progressDialog: ProgressDialog? = null
 
@@ -79,16 +79,20 @@ class AgendarConsultaFragment : Fragment() {
         }
 
         edt_data_consulta.setOnClickListener {
-            mCurrentDate = Calendar.getInstance()
             mCurrentDate?.let {
                 val ano = it.get(Calendar.YEAR)
                 val mes = it.get(Calendar.MONTH)
                 val dia = it.get(Calendar.DAY_OF_WEEK)
                 val mDatePickerDialog = DatePickerDialog(view.context, R.style.DialogTheme,
                     DatePickerDialog.OnDateSetListener { datePicker, selecionaAno, selecionaMes, selecionaDia ->
-                        edt_data_consulta.setText("${selecionaDia.toString()}-${selecionaMes + 1}-$selecionaAno")
-                        it.set(selecionaAno, selecionaMes, selecionaDia)
-                        data = edt_data_consulta.text.toString()
+                        if (selecionaAno != ano) {
+                            context?.mostrarMensagem("Ano selecionado não permitido")
+                            edt_data_consulta.error = "Data inválida"
+                        } else {
+                            edt_data_consulta.setText("${selecionaDia.toString()}-${selecionaMes + 1}-$selecionaAno")
+                            it.set(selecionaAno, selecionaMes, selecionaDia)
+                            data = edt_data_consulta.text.toString()
+                        }
                     }, ano, mes, dia)
                 mDatePickerDialog.show()
 
@@ -113,18 +117,16 @@ class AgendarConsultaFragment : Fragment() {
         progressDialog?.setMessage(msg_acarregar)
         progressDialog?.show()
 
-        Handler().postDelayed(object : Runnable {
-            override fun run() {
-                progressDialog?.dismiss()
-                if (remarcar_agenda){
-                    minhasConsultasViewModel.update(MinhasConsultasEntity(idConsulta, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
-                    getFragmentManager()?.popBackStack()
-                    context?.mostrarMensagem("Consulta atualizada com sucesso !!")
-                }else{
-                    minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
-                    activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(AgendarConsultaFragmentDirections.actionAgendarConsultaFragmentToHostFragmentMedico())
-                    context?.mostrarMensagem("Consulta marcada com sucesso !!")
-                }
+        Handler().postDelayed({
+            progressDialog?.dismiss()
+            if (remarcar_agenda){
+                minhasConsultasViewModel.update(MinhasConsultasEntity(idConsulta, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
+                getFragmentManager()?.popBackStack()
+                context?.mostrarMensagem("Consulta atualizada com sucesso !!")
+            }else{
+                minhasConsultasViewModel.inserir(MinhasConsultasEntity(0, relatorio, estados_consulta.get(0),data.plus(", $hora"),paciente,medico))
+                activity?.findNavController(R.id.fragmentConteinerSplash)?.navigate(AgendarConsultaFragmentDirections.actionAgendarConsultaFragmentToHostFragmentMedico())
+                context?.mostrarMensagem("Consulta marcada com sucesso !!")
             }
         }, TEMPO_RUN.toLong())
     }
@@ -144,19 +146,20 @@ class AgendarConsultaFragment : Fragment() {
         }
 
         if (!hora.matches(regex_hora.toRegex())) {
-            view.edt_hora.setError("A hora deve estar no formato hh:mm")
+            view.edt_hora.error = "A hora deve estar no formato hh:mm"
             return false
         }
 
-        var hora_temp = hora.split(":")
+        val hora_temp = hora.split(":")
 
         if (hora_temp.get(0).toInt() >24){
-            view.edt_hora.setError("Hora não pode ser maior que 24")
+            view.edt_hora.error = "Hora não pode ser maior que 24"
+            return false
         }
 
-
         if (hora_temp.get(1).toInt() >60){
-            view.edt_hora.setError("Minutos não podem ser maior que 60")
+            view.edt_hora.error = "Minutos não podem ser maior que 60"
+            return false
         }
 
         if (TextUtils.isEmpty(hora)) {
@@ -168,6 +171,37 @@ class AgendarConsultaFragment : Fragment() {
             view.context.erroEditText(view.edt_data_consulta, MSG_ERRO_VAZIO_CAMPO)
             return false
         }
+
+        val data_consulta = data.split("-")
+        val ano = mCurrentDate.get(Calendar.YEAR)
+        val mes = mCurrentDate.get(Calendar.MONTH)
+        val dia = mCurrentDate.get(Calendar.DAY_OF_WEEK)
+
+        if (data_consulta[2].toInt() <ano){
+            view.edt_data_consulta.setText(null)
+            view.edt_data_consulta.error = "Data Inválida"
+            context?.mostrarMensagem("Ano selecionado não permitido")
+            return false
+        }
+
+        if (data_consulta[1].toInt() < mes+1){
+            view.edt_data_consulta.setText(null)
+            view.edt_data_consulta.error = "Data Inválida"
+            context?.mostrarMensagem("Ano selecionado não permitido")
+            return false
+        }
+
+        if (data_consulta[0].toInt() <dia){
+            view.edt_data_consulta.setText(null)
+            view.edt_data_consulta.error = "Data Inválida"
+            context?.mostrarMensagem("Ano selecionado não permitido")
+            return false
+        }
+
+        Log.i("log_user","0"+data_consulta.get(0))
+        Log.i("log_user","1"+data_consulta.get(1))
+        Log.i("log_user","mes"+mes)
+        Log.i("log_user","2"+data_consulta.get(2))
 
         return true
     }

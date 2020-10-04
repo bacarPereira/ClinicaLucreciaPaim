@@ -76,7 +76,7 @@ class TelaIniciaLoginFragment : Fragment() {
             view.txt_gestant.setTextColor(resources.getColor(R.color.colorBlack))
             gest = false
             medi = true
-            view.textInputUsuario.hint = "Número Da Ordem"
+            view.textInputUsuario.hint = "Email"
         }
     }
 

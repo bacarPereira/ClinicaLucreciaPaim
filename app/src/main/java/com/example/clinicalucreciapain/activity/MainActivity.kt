@@ -301,7 +301,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun salvarMinhasCOnsultas(minhasConsultasViewModel: MinhasConsultasViewModel) {
-
         consultasMed1(minhasConsultasViewModel)
         consultasMed2(minhasConsultasViewModel)
         consultasMed3(minhasConsultasViewModel)

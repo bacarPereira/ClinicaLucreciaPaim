@@ -30,10 +30,13 @@ class SplashFragment : Fragment() {
 
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
 
+        initDialogo(view)
+
         InternetCheck(object : InternetCheck.Consumer {
             override fun accept(internet: Boolean?) {
                 if (internet != true){
                     //dialog_inf_red?.show()
+                    //lancarJanelaHome()
                     lancarJanelaHome()
                 }
                 else{
@@ -47,7 +50,6 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initDialogo(view)
     }
 
     private fun lancarJanelaHome() {
