@@ -13,5 +13,4 @@ class BebeEntity (
     var sexo:String,
     var semanas:String,
     var dias:String
-
 )

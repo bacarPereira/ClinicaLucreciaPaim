@@ -1,16 +1,27 @@
 package com.example.clinicalucreciapain.activity
 
+import android.app.Activity
+import android.app.Dialog
 import android.os.Bundle
 import android.util.Log
+import android.view.WindowManager.BadTokenException
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.clinicalucreciapain.R
 import com.example.clinicalucreciapain.baseDeDados.entidades.*
 import com.example.clinicalucreciapain.comuns.*
+import com.example.clinicalucreciapain.webService.ClinicaAPI
+import com.example.clinicalucreciapain.webService.UsuarioPerfilResponse
+import kotlinx.android.synthetic.main.dialogo_conexao_internet.*
 import proitdevelopers.com.bloomberg.viewModel.*
+import retrofit2.Call
+import retrofit2.Response
+
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var dialog_inf_red: Dialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +33,7 @@ class MainActivity : AppCompatActivity() {
         minhasConsultasViewModel = ViewModelProviders.of(this).get(MinhasConsultasViewModel::class.java)
         bebeViewModel = ViewModelProviders.of(this).get(BebeViewModel::class.java)
 
-        for (e in email)
-            Log.i("email__",e)
+        initDialogo(this)
 
 
         recomendacaoViewModel.recomendacao.observe(this@MainActivity, Observer { recomendacoes ->
@@ -39,6 +49,57 @@ class MainActivity : AppCompatActivity() {
                 salvarCartaoGestante(cartaoGestanteViewModel)
                 salvarMinhasCOnsultas(minhasConsultasViewModel)
                 salvarMeuBebe(bebeViewModel)
+            }
+        })
+    }
+
+    private fun initDialogo(view: MainActivity) {
+        dialog_inf_red = Dialog(this)
+        dialog_inf_red.setContentView(R.layout.dialogo_conexao_internet)
+        dialog_inf_red.setCancelable(false)
+        dialog_inf_red.ben_refresh?.setOnClickListener {
+            dialog_inf_red.dismiss()
+            getMeuPerfilHttp()
+        }
+    }
+
+    fun tentarReconectarInternet(){
+        InternetCheck(object : InternetCheck.Consumer {
+            override fun accept(internet: Boolean?){
+                if (internet != true) {
+                    if (!(this@MainActivity).isFinishing) {
+                        try {
+                            dialog_inf_red.show()
+                        } catch (e: BadTokenException) {
+                            Log.e("WindowManagerBad ", e.toString())
+                        }
+                    }
+                }else{
+                    if (!(this@MainActivity).isFinishing) {
+                        try {
+                            dialog_inf_red.dismiss()
+                        } catch (e: BadTokenException) {
+                            Log.e("WindowManagerBad ", e.toString())
+                        }
+                    }
+
+                }
+            }
+        })
+    }
+
+    private fun getMeuPerfilHttp() {
+        val call = ClinicaAPI.service.getUsuarioPerfil()
+        call.enqueue(object : retrofit2.Callback<UsuarioPerfilResponse> {
+            override fun onResponse(
+                call: Call<UsuarioPerfilResponse>,
+                response: Response<UsuarioPerfilResponse>
+            ) {
+                if (response.isSuccessful && response.body() != null) { }
+            }
+
+            override fun onFailure(call: Call<UsuarioPerfilResponse>, t: Throwable) {
+                tentarReconectarInternet()
             }
         })
     }
@@ -325,5 +386,10 @@ class MainActivity : AppCompatActivity() {
         bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(13), sexo.get(0),"3 ","1"))
         bebeViewModel.inserir(BebeEntity(0,10f,15f, nomes.get(14), sexo.get(0),"2 ","2"))
 
+    }
+
+    override fun onStart() {
+        super.onStart()
+        getMeuPerfilHttp()
     }
 }

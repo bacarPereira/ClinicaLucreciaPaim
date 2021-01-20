@@ -21,7 +21,6 @@ import proitdevelopers.com.bloomberg.viewModel.MedicoUserViewModel
 class SplashFragment : Fragment() {
 
     val TEMPO_SPLASH = 3000
-    var dialog_inf_red: Dialog? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -29,21 +28,7 @@ class SplashFragment : Fragment() {
         medicoUserViewModel = ViewModelProviders.of(this).get(MedicoUserViewModel::class.java)
 
         val view = inflater.inflate(R.layout.fragment_splash, container, false)
-
-        initDialogo(view)
-
-        InternetCheck(object : InternetCheck.Consumer {
-            override fun accept(internet: Boolean?) {
-                if (internet != true){
-                    //dialog_inf_red?.show()
-                    //lancarJanelaHome()
-                    lancarJanelaHome()
-                }
-                else{
-                    lancarJanelaHome()
-                }
-            }
-        })
+        lancarJanelaHome()
 
         return view
     }
@@ -55,7 +40,6 @@ class SplashFragment : Fragment() {
     private fun lancarJanelaHome() {
         Handler().postDelayed(object : Runnable {
             override fun run() {
-
                 gestanteUserViewModel.gestante.observe(this@SplashFragment, Observer {
 
                     if (it.size>0){
@@ -76,26 +60,4 @@ class SplashFragment : Fragment() {
             }
         }, TEMPO_SPLASH.toLong())
     }
-
-    private fun initDialogo(view: View) {
-        dialog_inf_red = Dialog(view.context)
-        dialog_inf_red?.setContentView(R.layout.dialogo_conexao_internet)
-        dialog_inf_red?.setCancelable(false)
-        dialog_inf_red?.ben_refresh?.setOnClickListener {
-            dialog_inf_red?.dismiss()
-            InternetCheck(object : InternetCheck.Consumer {
-                override fun accept(internet: Boolean?) {
-                    if (internet != true){
-                        dialog_inf_red?.show()
-                    }
-                    else{
-                        lancarJanelaHome()
-                        Log.i("test_______________", "COM NET")
-                    }
-                }
-            })
-        }
-    }
-
-
 }
